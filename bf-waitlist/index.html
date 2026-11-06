@@ -136,6 +136,19 @@ a{color:var(--navy)}
 .learn-card p{font-size:15.5px;color:var(--muted);line-height:1.62}
 .learn-card .tip{display:block;margin-top:14px;padding:2px 0 2px 12px;border-left:3px solid var(--coral);font-size:15px;font-style:italic;font-weight:700;color:var(--navy);line-height:1.5}
 
+/* ── PROOF: Heather's funnel ── */
+.proof{padding:0 0 88px;background:var(--white)}
+@media(max-width:640px){.proof{padding:0 0 56px}}
+.proof-card{max-width:1080px;margin:0 auto;background:var(--lime-lt);border-radius:14px;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:20px;padding:36px 48px 36px 20px;overflow:hidden}
+@media(max-width:860px){.proof-card{grid-template-columns:1fr;padding:26px 22px 32px;gap:8px;text-align:center}}
+.proof-img img{width:100%;height:auto;display:block}
+.proof-copy .eyebrow{color:var(--navy)}
+.proof-stat{font-family:var(--head);font-weight:700;color:var(--navy);line-height:1;font-size:clamp(3.4rem,8vw,5rem);margin-bottom:6px;font-variant-numeric:lining-nums}
+.proof-stat-lbl{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:18px;line-height:1.4}
+.proof-stat-lbl em{font-style:normal;background:var(--white);padding:1px 7px;border-radius:3px;white-space:nowrap}
+.proof-copy p{font-size:16px;color:var(--text);line-height:1.65}
+.proof-who{display:block;margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
+
 /* ── WAITLIST CARD ── */
 .waitlist{background:var(--blush);padding:84px 0;color:var(--text);border-top:1px solid var(--border)}
 @media(max-width:640px){.waitlist{padding:56px 0}}
@@ -276,6 +289,26 @@ footer a:hover{color:var(--navy)}
           <p>And the one thing that changes that. One kidney dietitian brought in 522 new subscribers at $0.34 each!</p>
           <span class="tip">Pay extra attention to this part. 😉</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROOF: Heather's funnel (the case study from point 4) -->
+<section class="proof">
+  <div class="wrap">
+    <div class="proof-card fi">
+      <div class="proof-img">
+        <img src="../mockup.png" width="1200" height="800" loading="lazy" decoding="async"
+             alt="Heather's done-for-you funnel: Meta ads, opt-in page, thank-you page, email automation and lead magnet guide" />
+      </div>
+      <div class="proof-copy">
+        <span class="eyebrow">Real funnel, real results</span>
+        <div class="proof-stat">522</div>
+        <p class="proof-stat-lbl">new subscribers in two months, <em>at $0.34 each</em></p>
+        <p>Heather came to us with a freebie, an email list and past ads, and her list was still growing slowly. We tightened her lead magnet, built a welcome sequence around it and added a small ad budget. Some of those new subscribers have already become paying clients.</p>
+        <span class="proof-who">Heather · Kidney Dietitian</span>
       </div>
     </div>
   </div>
