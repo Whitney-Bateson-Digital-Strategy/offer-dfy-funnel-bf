@@ -96,13 +96,15 @@ a{color:var(--navy)}
 @media(prefers-reduced-motion:reduce){.tb-dot{animation:none}}
 
 /* ── REPLAY HERO ── same player as the banner on the sales page */
-.replay{background:var(--lime-lt);padding:60px 0 64px}
-@media(max-width:640px){.replay{padding:36px 0 42px}}
-.replay-copy{max-width:780px;margin:0 auto 30px;text-align:center}
+.intro{background:var(--white);padding:60px 0 52px}
+@media(max-width:640px){.intro{padding:38px 0 34px}}
+.replay{background:var(--lime-lt);padding:56px 0 64px}
+@media(max-width:640px){.replay{padding:32px 0 42px}}
+.replay-copy{max-width:780px;margin:0 auto;text-align:center}
 .eyebrow{display:block;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
 .replay-h{font-size:clamp(1.9rem,4.4vw,3rem);color:var(--navy);margin:0 auto 16px;line-height:1.15;max-width:760px}
-.replay-h em{font-style:normal;background:var(--peach);padding:1px 9px;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.replay-sub{font-size:17px;color:var(--text);line-height:1.6;margin:0 auto;max-width:620px}
+.replay-h em{font-style:normal;background:var(--hi-md);padding:1px 9px;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.replay-sub{font-size:17.5px;color:var(--muted);line-height:1.6;margin:0 auto;max-width:620px}
 @media(max-width:640px){.replay-sub{font-size:15.5px}}
 .replay-embed{width:100%;max-width:820px;margin:0 auto}
 .replay-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r-lg);overflow:hidden;background:var(--navy-dk);box-shadow:0 6px 22px rgba(0,0,0,.24)}
@@ -131,7 +133,7 @@ a{color:var(--navy)}
 .learn-num{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--lime);color:var(--navy);font-family:var(--head);font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1}
 .learn-card h3{font-size:1.3rem;margin-bottom:8px;line-height:1.25}
 .learn-card p{font-size:15.5px;color:var(--muted);line-height:1.62}
-.learn-card .tip{display:inline-block;margin-top:12px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--white);background:var(--coral);border-radius:3px;padding:4px 9px}
+.learn-card .tip{display:block;margin-top:14px;padding:2px 0 2px 12px;border-left:3px solid var(--coral);font-size:15px;font-style:italic;font-weight:700;color:var(--navy);line-height:1.5}
 
 /* ── WAITLIST CARD ── */
 .waitlist{background:var(--navy);padding:84px 0;color:var(--white)}
@@ -140,11 +142,18 @@ a{color:var(--navy)}
 .wl-card .eyebrow{color:var(--lime)}
 .wl-card h2{color:var(--white);font-size:clamp(1.9rem,4.4vw,2.8rem);margin-bottom:16px}
 .wl-lead{font-size:17.5px;color:rgba(255,255,255,.88);max-width:600px;margin:0 auto 34px;line-height:1.62}
-.wl-points{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 auto 38px;text-align:left}
-@media(max-width:760px){.wl-points{grid-template-columns:1fr;max-width:460px}}
+.wl-card{max-width:900px}
+.wl-points{list-style:none;display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:18px;align-items:center;margin:0 auto 40px;text-align:left}
+@media(max-width:820px){.wl-points{grid-template-columns:1fr;max-width:480px}}
 .wl-points li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);padding:20px 20px 22px}
 .wl-points strong{display:block;font-family:var(--head);font-size:1.3rem;color:var(--lime);font-weight:600;line-height:1.2;margin-bottom:6px}
 .wl-points span{font-size:14.5px;color:rgba(255,255,255,.82);line-height:1.55;display:block}
+/* The bonus is the star: lime card, bigger, lifted, a badge on top. */
+.wl-points li.wl-bonus{position:relative;background:var(--lime);border:none;padding:40px 28px 30px;text-align:center;box-shadow:0 14px 40px rgba(0,0,0,.28);transform:scale(1.04)}
+@media(max-width:820px){.wl-points li.wl-bonus{order:-1;transform:none;margin-top:14px}}
+.wl-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--coral);color:var(--white);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 16px;border-radius:999px;white-space:nowrap;box-shadow:0 4px 12px rgba(255,127,80,.35)}
+.wl-points li.wl-bonus strong{color:var(--navy);font-size:1.8rem;margin-bottom:10px}
+.wl-points li.wl-bonus span{color:var(--navy);font-size:15.5px;line-height:1.6}
 .wl-card .cta-note{color:rgba(255,255,255,.75);font-weight:600}
 
 /* ── NOTE FROM WHITNEY ── */
@@ -183,7 +192,7 @@ footer a:hover{color:var(--white)}
       <p class="tb-copy">
         <span class="tb-dot"></span>
         <span>
-          <span class="tb-live">Early Black Friday: doors open <span class="tb-hl">Wednesday, Nov 18</span>. Only 5 spots.</span>
+          <span class="tb-live">Early Black Friday: Done-for-You Funnel doors open <span class="tb-hl">Wednesday, Nov 18</span></span>
           <span class="tb-open" hidden>Doors are open! <span class="tb-hl">Only 5 spots this round.</span></span>
         </span>
       </p>
@@ -200,13 +209,18 @@ footer a:hover{color:var(--white)}
 
 <!-- REPLAY HERO
      TO SWAP THE VIDEO: change the ID in data-video-src on #replay-cover. -->
-<section class="replay" id="replay">
+<section class="intro">
   <div class="wrap">
     <div class="replay-copy">
       <span class="eyebrow">Free training replay</span>
       <h1 class="replay-h">The list-building system that brings in clients <em>while you're off social media</em></h1>
-      <p class="replay-sub">My full training for health and nutrition practitioners. Watch it this week, and you'll know by Wednesday whether a funnel is the right next step for your practice.</p>
+      <p class="replay-sub">See how health and nutrition practitioners are growing their email lists every day without posting. It's the same system my team builds for you in our Done-for-You Funnel, opening early for Black Friday.</p>
     </div>
+  </div>
+</section>
+
+<section class="replay" id="replay">
+  <div class="wrap">
     <div class="replay-embed">
       <div class="replay-frame">
         <button class="replay-cover" id="replay-cover" type="button" data-video-src="https://www.youtube.com/embed/FRNAHlJ1anA?autoplay=1&amp;rel=0" aria-label="Play the training replay">
@@ -223,8 +237,8 @@ footer a:hover{color:var(--white)}
       </div>
     </div>
     <div class="replay-cta">
-      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Save me first access &rarr;</a>
-      <p class="cta-note">Hear from me Wednesday morning, hours before doors open to everyone else.</p>
+      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Get first dibs &rarr;</a>
+      <p class="cta-note">We'll email you Wednesday morning, hours before doors open to everyone else.</p>
     </div>
   </div>
 </section>
@@ -234,7 +248,6 @@ footer a:hover{color:var(--white)}
 <section class="learn">
   <div class="wrap">
     <div class="learn-head fi">
-      <span class="eyebrow">Inside the training</span>
       <h2>Here's what you'll learn</h2>
     </div>
     <div class="learn-grid">
@@ -264,7 +277,7 @@ footer a:hover{color:var(--white)}
         <div>
           <h3>Why running ads feels like handing a stranger your credit card</h3>
           <p>And the one thing that changes that. One kidney dietitian brought in 522 new subscribers at $0.34 each!</p>
-          <span class="tip">Pay extra attention to this part 😉</span>
+          <span class="tip">Pay extra attention to this part. 😉</span>
         </div>
       </div>
     </div>
@@ -278,13 +291,13 @@ footer a:hover{color:var(--white)}
     <div class="wl-card fi">
       <span class="eyebrow">Early Black Friday</span>
       <h2>Want first dibs?</h2>
-      <p class="wl-lead">On Wednesday, November 18th, we're opening doors to our Done-for-You Funnel, a full week before everyone else's sales hit your inbox. My team and I build your whole funnel for you, in your voice, in about 4 weeks.</p>
+      <p class="wl-lead">On Wednesday, November 18th, we're opening doors to our Done-for-You Funnel, a full week before everyone else's sales hit your inbox. My team and I build your whole funnel for you, in your voice, in 4 to 6 weeks.</p>
       <ul class="wl-points">
         <li><strong>First access</strong><span>The waitlist hears from me Wednesday morning, hours before anyone else.</span></li>
-        <li><strong>Only 5 spots</strong><span>We're keeping this round small so every funnel is ready for January.</span></li>
-        <li><strong>A special bonus 👀</strong><span>For anyone who grabs a spot by Friday the 20th. It makes starting ads a lot less scary.</span></li>
+        <li class="wl-bonus"><span class="wl-badge">Never offered before</span><strong>A special bonus 👀</strong><span>Only for those who grab a spot by Friday, November 20th. Let's just say it makes getting started with ads a whole lot less scary.</span></li>
+        <li><strong>Only 5 spots</strong><span>Small on purpose, so every funnel is live for the New Year, when people are looking for help with their health goals.</span></li>
       </ul>
-      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Save me first access &rarr;</a>
+      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Get first dibs &rarr;</a>
       <p class="cta-note">Lead magnet, opt-in page, welcome emails and Meta ads, all built for you.</p>
     </div>
   </div>
@@ -297,8 +310,8 @@ footer a:hover{color:var(--white)}
     <div class="note-card fi">
       <div class="note-photo"><img src="../dfy%20funnel%20bio.jpeg" alt="Whitney Bateson" width="1137" height="1137" loading="lazy" /></div>
       <div>
-        <h2>Not sure a funnel is right for you yet?</h2>
-        <p>That's exactly what the training is for. I want you to have everything you need to decide before doors open. And if you're still on the fence after watching, just hit reply on any of my emails and tell me what you're working on. I'll give you my honest take before Wednesday.</p>
+        <h2>Ready to grow your email list (without more posting)?</h2>
+        <p>That's exactly what the training walks you through, and it's what my team builds for you in our Done-for-You Funnel. When doors open on Wednesday, you'll also get an easy way to share a bit about your practice and get our honest take on whether a funnel is the right next step for you.</p>
         <img class="note-sig" src="../Script-Navy.png" alt="Whitney Bateson" width="1545" height="863" loading="lazy" />
         <span class="note-role">MPH, RD · Strategy &amp; Brand Voice</span>
       </div>
