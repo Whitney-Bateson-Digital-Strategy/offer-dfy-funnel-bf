@@ -123,18 +123,27 @@ a{color:var(--navy)}
 .cta-note{font-size:14px;color:var(--text);font-style:italic;font-weight:600;margin-top:14px}
 
 /* ── WHAT YOU'LL LEARN ── */
-.learn{padding:80px 0;background:var(--white)}
-@media(max-width:640px){.learn{padding:52px 0}}
-.learn-head{text-align:center;max-width:640px;margin:0 auto 40px}
-.learn-head h2{font-size:clamp(1.75rem,4vw,2.5rem)}
-.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:980px;margin:0 auto}
-@media(max-width:760px){.learn-grid{grid-template-columns:1fr;gap:16px}}
-.learn-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 30px;box-shadow:var(--sh-sm);display:flex;gap:18px;align-items:flex-start}
-.learn-card.feature{background:var(--cream);border-color:rgba(255,127,80,.4)}
-.learn-num{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--lime);color:var(--navy);font-family:var(--head);font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1}
-.learn-card h3{font-size:1.3rem;margin-bottom:8px;line-height:1.25}
-.learn-card p{font-size:15.5px;color:var(--muted);line-height:1.62}
-.learn-card .tip{display:block;margin-top:14px;padding:2px 0 2px 12px;border-left:3px solid var(--coral);font-size:15px;font-style:italic;font-weight:700;color:var(--navy);line-height:1.5}
+.learn{padding:88px 0 80px;background:var(--white)}
+@media(max-width:640px){.learn{padding:52px 0 48px}}
+/* Photo of Whitney on the left, an editorial numbered list on the right. */
+.learn-cols{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:center;max-width:1080px;margin:0 auto}
+@media(max-width:860px){.learn-cols{grid-template-columns:1fr;gap:34px}}
+.learn-photo{position:relative;padding:0 0 18px 18px}
+.learn-photo::before{content:'';position:absolute;left:0;bottom:0;width:78%;height:78%;background:var(--lime);border-radius:14px}
+.learn-photo img{position:relative;width:100%;height:auto;aspect-ratio:834/900;object-fit:cover;object-position:50% 30%;border-radius:14px;display:block;box-shadow:var(--sh-md)}
+@media(max-width:860px){.learn-photo{max-width:420px;margin:0 auto;width:100%}.learn-photo img{aspect-ratio:4/3.4}}
+.learn-tag{position:absolute;right:-14px;top:28px;background:var(--white);color:var(--navy);font-family:var(--head);font-style:italic;font-weight:600;font-size:1.15rem;line-height:1.25;padding:12px 18px;border-radius:10px;box-shadow:var(--sh-md);transform:rotate(3deg);max-width:190px}
+@media(max-width:860px){.learn-tag{right:-6px;top:16px;font-size:1rem;padding:10px 14px}}
+.learn-head h2{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:10px}
+@media(max-width:860px){.learn-head{text-align:center}}
+.learn-list{list-style:none;margin-top:18px}
+.learn-item{display:grid;grid-template-columns:62px 1fr;gap:6px;padding:22px 0;border-top:1px solid rgba(2,82,93,.14)}
+.learn-item:last-child{padding-bottom:0}
+.learn-num{font-family:var(--head);font-size:3rem;font-weight:600;line-height:.9;color:var(--coral);font-variant-numeric:lining-nums}
+.learn-item h3{font-size:1.4rem;line-height:1.25;margin-bottom:6px}
+.learn-item p{font-size:16px;color:var(--muted);line-height:1.6;margin:0}
+.learn-item.feature h3 span{background:var(--hi-md);padding:0 5px;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.learn-item .tip{display:block;margin-top:10px;font-family:var(--head);font-size:1.15rem;font-style:italic;font-weight:600;color:var(--coral-dk)}
 
 /* ── PROOF: Heather's funnel ── */
 .proof{padding:0 0 88px;background:var(--white)}
@@ -247,8 +256,8 @@ footer a:hover{color:var(--navy)}
       </div>
     </div>
     <div class="replay-cta">
-      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Get first dibs &rarr;</a>
-      <p class="cta-note">We'll email you Wednesday morning, hours before doors open to everyone else.</p>
+      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Be the first to know when doors open &rarr;</a>
+      <p class="cta-note">We'll email you Wednesday morning, hours before everyone else hears about it.</p>
     </div>
   </div>
 </section>
@@ -257,38 +266,47 @@ footer a:hover{color:var(--navy)}
 <!-- WHAT YOU'LL LEARN -->
 <section class="learn">
   <div class="wrap">
-    <div class="learn-head fi">
-      <h2>Here's what you'll learn</h2>
-    </div>
-    <div class="learn-grid">
-      <div class="learn-card fi">
-        <span class="learn-num">1</span>
-        <div>
-          <h3>Why social media and referrals cap your growth</h3>
-          <p>And what to build instead, so new people find you every day.</p>
-        </div>
+    <div class="learn-cols">
+      <div class="learn-photo fi">
+        <img src="whitney-training.jpg" width="834" height="900" loading="lazy" decoding="async"
+             alt="Whitney Bateson smiling while teaching the list-building training" />
+        <span class="learn-tag">Grab a tea. This one's worth it. ☕</span>
       </div>
-      <div class="learn-card fi d1">
-        <span class="learn-num">2</span>
-        <div>
-          <h3>The lead magnet mistake almost every practitioner makes</h3>
-          <p>Hint: making it longer or more thorough won't fix it.</p>
+      <div class="learn-body">
+        <div class="learn-head fi">
+          <h2>Here's what you'll learn</h2>
         </div>
-      </div>
-      <div class="learn-card fi">
-        <span class="learn-num">3</span>
-        <div>
-          <h3>The &ldquo;draft folder&rdquo; problem</h3>
-          <p>Why so many funnels never go live, and what finally gets yours out the door.</p>
-        </div>
-      </div>
-      <div class="learn-card feature fi d1">
-        <span class="learn-num">4</span>
-        <div>
-          <h3>Why running ads feels like handing a stranger your credit card</h3>
-          <p>And the one thing that changes that. One kidney dietitian brought in 522 new subscribers at $0.34 each!</p>
-          <span class="tip">Pay extra attention to this part. 😉</span>
-        </div>
+        <ol class="learn-list">
+          <li class="learn-item fi">
+            <span class="learn-num">1</span>
+            <div>
+              <h3>Why social media and referrals cap your growth</h3>
+              <p>And what to build instead, so new people find you every day.</p>
+            </div>
+          </li>
+          <li class="learn-item fi">
+            <span class="learn-num">2</span>
+            <div>
+              <h3>The lead magnet mistake almost every practitioner makes</h3>
+              <p>Hint: making it longer or more thorough won't fix it.</p>
+            </div>
+          </li>
+          <li class="learn-item fi">
+            <span class="learn-num">3</span>
+            <div>
+              <h3>The &ldquo;draft folder&rdquo; problem</h3>
+              <p>Why so many funnels never go live, and what finally gets yours out the door.</p>
+            </div>
+          </li>
+          <li class="learn-item feature fi">
+            <span class="learn-num">4</span>
+            <div>
+              <h3><span>Why running ads feels like handing a stranger your credit card</span></h3>
+              <p>And the one thing that changes that. One kidney dietitian brought in 522 new subscribers at $0.34 each!</p>
+              <span class="tip">Pay extra attention to this part. 😉</span>
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
   </div>
@@ -328,7 +346,7 @@ footer a:hover{color:var(--navy)}
         <li class="wl-bonus"><span class="wl-badge">Never offered before</span><strong>A special bonus</strong><span>There's a little something extra for anyone who grabs a spot by Friday, November 20th. We'll share the details when doors open. 👀</span></li>
         <li><span class="wl-icon" aria-hidden="true">✋</span><strong>Only 5 spots</strong><span>Small on purpose, so every funnel is live for the New Year, when people are looking for help with their health goals.</span></li>
       </ul>
-      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Get first dibs &rarr;</a>
+      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Be the first to know when doors open &rarr;</a>
       <p class="cta-note">Lead magnet, opt-in page, welcome emails and Meta ads, all built for you.</p>
     </div>
   </div>
