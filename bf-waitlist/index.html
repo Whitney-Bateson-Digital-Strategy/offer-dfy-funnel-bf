@@ -61,6 +61,7 @@ h1,h2,h3{font-family:var(--head);line-height:1.18;font-weight:600;color:var(--na
 p{margin-bottom:16px}p:last-child{margin-bottom:0}
 a{color:var(--navy)}
 [hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 .wrap{max-width:var(--mw);margin:0 auto;padding:0 36px}
 @media(max-width:640px){.wrap{padding:0 20px}}
@@ -79,9 +80,9 @@ a{color:var(--navy)}
 @media(max-width:480px){.btn-lg{display:block;width:100%;text-align:center;white-space:normal;padding:17px 20px}}
 
 /* ── TOP BAR ─────────────────────────────────────────────────────────
-   Counts down to doors opening. TO CHANGE THE TIME: edit data-doors on
+   Counts down to the deal going live. TO CHANGE THE TIME: edit data-doors on
    <body>. Once that time passes the countdown hides and the bar switches
-   to its "doors are open" line.
+   to its "the deal is live" line.
 ─────────────────────────────────────────────────────────────────── */
 .top-bar{position:sticky;top:0;z-index:101;background:var(--white);color:var(--navy);padding:13px 0;border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(2,82,93,.07)}
 .top-row{display:flex;align-items:center;justify-content:center;gap:12px 26px;flex-wrap:wrap}
@@ -108,6 +109,9 @@ a{color:var(--navy)}
 .replay-sub{font-size:17px;color:var(--text);line-height:1.6;margin:0 auto;max-width:620px}
 @media(max-width:640px){.replay-sub{font-size:15.5px}}
 .replay-embed{width:100%;max-width:820px;margin:0 auto}
+.replay-tag{display:flex;justify-content:center;margin:0 auto 14px}
+.replay-tag span{display:inline-flex;align-items:center;gap:9px;background:var(--white);color:var(--navy);font-size:13px;font-weight:700;letter-spacing:.02em;padding:7px 16px 7px 13px;border-radius:999px;box-shadow:var(--sh-sm)}
+.replay-tag span::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--coral);flex-shrink:0}
 .replay-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r-lg);overflow:hidden;background:var(--navy-dk);box-shadow:0 6px 22px rgba(0,0,0,.24)}
 .replay-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .replay-cover{position:absolute;inset:0;width:100%;height:100%;padding:0;border:none;background:none;cursor:pointer;display:block;--play-x:17.8%;--play-y:50%}
@@ -120,7 +124,14 @@ a{color:var(--navy)}
 @media(max-width:860px){.replay-play{width:62px;height:62px}}
 @media(max-width:480px){.replay-play{width:48px;height:48px}}
 .replay-cta{text-align:center;margin-top:26px}
-.cta-note{font-size:14px;color:var(--text);font-style:italic;font-weight:600;margin-top:14px}
+/* "Prefer to listen?" bar under the video. Plain <audio>, so it keeps playing
+   with the phone locked. Hidden until AUDIO_URL (bottom script) is set. */
+.listen{max-width:820px;margin:16px auto 0;background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-sm);padding:12px 14px 12px 20px;display:flex;align-items:center;gap:16px}
+.listen-label{flex-shrink:0;font-family:var(--head);font-style:italic;font-weight:700;font-size:1.2rem;color:var(--navy);line-height:1.2}
+.listen-label small{display:block;font-family:var(--body);font-style:normal;font-weight:600;font-size:12.5px;color:var(--muted);margin-top:2px}
+.listen audio{flex:1;min-width:0;width:100%;height:42px}
+@media(max-width:640px){.listen{flex-direction:column;align-items:stretch;gap:8px;padding:14px 14px 12px;text-align:center}.listen audio{flex:none}}
+.cta-note{font-size:14px;color:var(--text);font-style:italic;font-weight:600;margin:14px auto 0;max-width:520px;line-height:1.55}
 
 /* ── WHAT YOU'LL LEARN ── */
 .learn{padding:88px 0 80px;background:var(--white)}
@@ -132,8 +143,6 @@ a{color:var(--navy)}
 .learn-photo::before{content:'';position:absolute;left:0;bottom:0;width:78%;height:78%;background:var(--lime);border-radius:14px}
 .learn-photo img{position:relative;width:100%;height:auto;aspect-ratio:712/945;object-fit:cover;object-position:50% 35%;border-radius:14px;display:block;box-shadow:var(--sh-md)}
 @media(max-width:860px){.learn-photo{max-width:420px;margin:0 auto;width:100%}.learn-photo img{aspect-ratio:4/4.2}}
-.learn-tag{position:absolute;right:-14px;top:28px;background:var(--white);color:var(--navy);font-family:var(--head);font-style:italic;font-weight:600;font-size:1.15rem;line-height:1.25;padding:12px 18px;border-radius:10px;box-shadow:var(--sh-md);transform:rotate(3deg);max-width:190px}
-@media(max-width:860px){.learn-tag{right:-6px;top:16px;font-size:1rem;padding:10px 14px}}
 .learn-head h2{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:10px}
 @media(max-width:860px){.learn-head{text-align:center}}
 .learn-list{list-style:none;margin-top:18px}
@@ -142,8 +151,9 @@ a{color:var(--navy)}
 .learn-num{font-family:var(--head);font-size:3rem;font-weight:600;line-height:.9;color:var(--coral);font-variant-numeric:lining-nums}
 .learn-item h3{font-size:1.4rem;line-height:1.25;margin-bottom:6px}
 .learn-item p{font-size:16px;color:var(--muted);line-height:1.6;margin:0}
-.learn-item.feature h3 span{background:var(--hi-md);padding:0 5px;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.learn-item .tip{display:block;margin-top:10px;font-family:var(--head);font-size:1.15rem;font-style:italic;font-weight:600;color:var(--coral-dk)}
+/* "Don't skip this one" note under point 4: soft lime, coral edge, not button-like. */
+.learn-item .tip{display:flex;align-items:center;gap:12px;margin-top:14px}
+.tip-sticker{display:inline-block;background:var(--lime-lt);color:var(--navy);font-family:var(--head);font-style:italic;font-weight:700;font-size:1.15rem;line-height:1.3;padding:8px 16px 9px;border-left:3px solid var(--coral);border-radius:0 8px 8px 0}
 
 /* ── PROOF: Heather's funnel ── */
 .proof{padding:0 0 88px;background:var(--white)}
@@ -179,6 +189,17 @@ a{color:var(--navy)}
 .wl-points li.wl-bonus strong{color:var(--navy);font-size:1.8rem;margin-bottom:10px}
 .wl-points li.wl-bonus span:not(.wl-badge){color:var(--navy);font-size:16px;line-height:1.6}
 .wl-card .cta-note{color:var(--muted)}
+.wl-form{max-width:640px;margin:0 auto;background:var(--white);border-radius:12px;box-shadow:var(--sh-md);padding:10px;display:flex;gap:10px}
+.wl-form input{flex:1;min-width:0;font-family:var(--body);font-size:16px;color:var(--text);background:var(--cream);border:1.5px solid transparent;border-radius:8px;padding:14px 16px;outline:none;transition:border-color .15s,background .15s}
+.wl-form input::placeholder{color:#8a8a8a}
+.wl-form input:focus{border-color:var(--coral);background:var(--white)}
+.wl-form .btn{flex-shrink:0;font-size:13.5px;padding:15px 24px}
+.wl-form .btn:disabled{opacity:.7;cursor:default;transform:none}
+@media(max-width:720px){.wl-form{flex-direction:column;padding:12px}.wl-form .btn{white-space:normal;padding:16px 18px}}
+.wl-error{color:var(--coral-dk);font-weight:700;font-size:14.5px;margin-top:12px}
+.wl-done{max-width:640px;margin:0 auto;background:var(--white);border-radius:12px;box-shadow:var(--sh-md);padding:26px 28px}
+.wl-done strong{display:block;font-family:var(--head);font-size:1.7rem;color:var(--navy);line-height:1.2;margin-bottom:6px}
+.wl-done span{font-size:16px;color:var(--text)}
 
 /* ── NOTE FROM WHITNEY ── */
 .note{padding:80px 0;background:var(--white)}
@@ -194,6 +215,44 @@ a{color:var(--navy)}
 @media(max-width:640px){.note-sig{margin:18px auto 0}}
 .note-role{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-top:4px;display:block}
 
+/* ── WAITLIST POP-UP ───────────────────────────────────────────────
+   Opens once per visitor (then stays away for 3 days): when the mouse
+   heads for the browser's close/tab bar on desktop, or after they've
+   scrolled past "Here's what you'll learn" / spent 40s on the page.
+   Never opens for someone who already joined, while the waitlist form is
+   on screen, or (on the timer) while they're watching the replay.
+   PREVIEW IT: add ?popup to the page URL.
+─────────────────────────────────────────────────────────────────── */
+.pop{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(1,61,70,.42);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;transition:opacity .28s ease}
+.pop.on{opacity:1}
+.pop-card{position:relative;width:100%;max-width:440px;max-height:calc(100vh - 40px);overflow:auto;background:var(--white);border-radius:18px;box-shadow:0 24px 60px rgba(1,61,70,.28);text-align:center;transform:translateY(16px) scale(.96);transition:transform .32s cubic-bezier(.2,.9,.3,1.2)}
+.pop.on .pop-card{transform:none}
+@media(prefers-reduced-motion:reduce){.pop,.pop-card{transition:none}}
+.pop-top{position:relative;background:var(--blush);padding:30px 24px 52px;overflow:hidden}
+.pop-top::before{content:'';position:absolute;width:190px;height:190px;border-radius:50%;background:var(--lime);right:-60px;top:-80px}
+.pop-top::after{content:'';position:absolute;width:90px;height:90px;border-radius:50%;background:var(--lime-lt);left:-30px;bottom:-40px}
+.pop-eyebrow{position:relative;z-index:1;display:inline-block;background:var(--white);color:var(--coral-dk);font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 13px;border-radius:999px;box-shadow:var(--sh-sm);margin-bottom:12px}
+.pop-h{position:relative;z-index:1;font-size:clamp(1.75rem,6vw,2.1rem);color:var(--navy);line-height:1.12}
+.pop-photo{position:relative;z-index:2;width:84px;height:84px;margin:-42px auto 0;border-radius:50%;overflow:hidden;border:4px solid var(--white);box-shadow:var(--sh-md);background:var(--hi-md)}
+.pop-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.pop-body{padding:14px 28px 24px}
+@media(max-width:420px){.pop-body{padding:12px 20px 20px}}
+.pop-body p{font-size:15.5px;color:var(--text);line-height:1.58;margin:0 0 16px}
+.pop-form{display:flex;flex-direction:column;gap:10px}
+.pop-form input{font-family:var(--body);font-size:16px;color:var(--text);background:var(--cream);border:1.5px solid transparent;border-radius:10px;padding:13px 15px;outline:none;transition:border-color .15s,background .15s}
+.pop-form input::placeholder{color:#8a8a8a}
+.pop-form input:focus{border-color:var(--coral);background:var(--white)}
+.pop-form .btn{font-size:13.5px;padding:15px 20px;border-radius:10px;white-space:normal}
+.pop-form .btn:disabled{opacity:.7;cursor:default;transform:none}
+.pop-no{display:inline-block;margin-top:12px;background:none;border:none;font-family:var(--body);font-size:13.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.pop-no:hover{color:var(--navy)}
+.pop-x{position:absolute;top:12px;right:12px;z-index:3;width:34px;height:34px;border-radius:50%;border:none;background:var(--white);color:var(--navy);font-size:20px;line-height:1;cursor:pointer;box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center}
+.pop-x:hover{background:var(--cream)}
+.pop-x:focus-visible,.pop-no:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+.pop .wl-error{margin-top:10px}
+.pop-done strong{display:block;font-family:var(--head);font-size:1.7rem;color:var(--navy);line-height:1.2;margin-bottom:6px}
+.pop-done span{font-size:15.5px;color:var(--text)}
+
 footer{background:var(--cream);border-top:1px solid var(--border);padding:28px 0;text-align:center;font-size:14px;color:var(--muted)}
 footer a{color:var(--muted)}
 footer a:hover{color:var(--navy)}
@@ -202,11 +261,12 @@ footer a:hover{color:var(--navy)}
 <!-- data-doors drives the countdown in the top bar (Wed, Nov 18, 9am ET). -->
 <body data-doors="2026-11-18T09:00:00-05:00">
 
-<!-- ══ WAITLIST LINK ═══════════════════════════════════════════════════
-     Every "Save me first access" button on this page has the class
-     js-waitlist. Paste the waitlist URL (Kit form / landing page that tags
-     "BF26: first access") into WAITLIST_URL in the script at the bottom
-     and all of them update at once.
+<!-- ══ WAITLIST FORM ═══════════════════════════════════════════════════
+     The form in the waitlist section posts straight to the Kit form
+     "BF DFY Funnel - Waitlist" (form ID 10162398, kit.com/4e3ab78251), so
+     any tags/automations set on that form in Kit apply. To point it at a
+     different Kit form, change the number in the form's action URL.
+     The top button just scrolls down to the form.
 ════════════════════════════════════════════════════════════════════ -->
 
 <!-- TOP BAR -->
@@ -216,11 +276,11 @@ footer a:hover{color:var(--navy)}
       <p class="tb-copy">
         <span class="tb-dot"></span>
         <span>
-          <span class="tb-live">Early Black Friday: Done-for-You Funnel doors open <span class="tb-hl">Wednesday, Nov 18</span></span>
-          <span class="tb-open" hidden>Doors are open! <span class="tb-hl">Only 5 spots this round.</span></span>
+          <span class="tb-live">Our early Black Friday deal on the Done-for-You Funnel goes live <span class="tb-hl">Wednesday, Nov 18</span></span>
+          <span class="tb-open" hidden>Our early Black Friday deal is live! <span class="tb-hl">The first 5 get a live funnel by mid-January.</span></span>
         </span>
       </p>
-      <div class="tb-count" id="tb-count" role="timer" aria-label="Time until doors open">
+      <div class="tb-count" id="tb-count" role="timer" aria-label="Time until the deal goes live">
         <span class="tb-unit"><span class="tb-num" data-unit="d">--</span><span class="tb-lbl">Days</span></span>
         <span class="tb-unit"><span class="tb-num" data-unit="h">--</span><span class="tb-lbl">Hrs</span></span>
         <span class="tb-unit"><span class="tb-num" data-unit="m">--</span><span class="tb-lbl">Min</span></span>
@@ -236,13 +296,15 @@ footer a:hover{color:var(--navy)}
 <section class="replay" id="replay">
   <div class="wrap">
     <div class="replay-copy">
-      <span class="eyebrow">Free training replay</span>
+      <span class="eyebrow">Free training</span>
       <h1 class="replay-h">The list-building system that brings in clients <em>while you're off social media</em></h1>
-      <p class="replay-sub">See how health and nutrition practitioners are growing their email lists every day without posting. It's the same system my team builds for you in our Done-for-You Funnel, opening early for Black Friday.</p>
+      <p class="replay-sub">See how health and nutrition practitioners are growing their email lists every day without posting. It's the same system my team builds for you in our Done-for-You Funnel, with an early Black Friday deal coming Wednesday.</p>
     </div>
+    <!-- Replay label. To add the date: "Replay of our live training from Oct 21". -->
+    <div class="replay-tag"><span>Replay of our most recent live training</span></div>
     <div class="replay-embed">
       <div class="replay-frame">
-        <button class="replay-cover" id="replay-cover" type="button" data-video-src="https://www.youtube.com/embed/FRNAHlJ1anA?autoplay=1&amp;rel=0" aria-label="Play the training replay">
+        <button class="replay-cover" id="replay-cover" type="button" data-video-src="https://www.youtube.com/embed/iEU5xkUT2CI?autoplay=1&amp;rel=0" aria-label="Play the training replay">
           <img class="replay-cover-img" src="../Funnel%20Webinar%20V1%20(1).png" width="1920" height="1080"
                alt="Free training: the list-building system that brings in clients while you're off social media" />
           <span class="replay-play">
@@ -255,9 +317,13 @@ footer a:hover{color:var(--navy)}
         <iframe id="replay-iframe" src="" title="The List Building System That Brings in Clients While You&rsquo;re Off Social Media" hidden loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
+    <div class="listen" id="listen" hidden>
+      <span class="listen-label">🎧 Prefer to listen?<small>Keeps playing with your phone locked</small></span>
+      <audio id="listen-audio" controls preload="none"></audio>
+    </div>
     <div class="replay-cta">
-      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Be the first to know when doors open &rarr;</a>
-      <p class="cta-note">We'll email you Wednesday morning, hours before everyone else hears about it.</p>
+      <a class="btn btn-p btn-lg js-to-form" href="#waitlist">Be the first to know when the deal goes live &rarr;</a>
+      <p class="cta-note">The first 5 people to grab a spot are guaranteed a live funnel and running ads by mid-January. The waitlist hears first, Wednesday morning, hours before anyone else.</p>
     </div>
   </div>
 </section>
@@ -270,7 +336,6 @@ footer a:hover{color:var(--navy)}
       <div class="learn-photo fi">
         <img src="whitney-learn.jpg" width="712" height="945" loading="lazy" decoding="async"
              alt="Whitney Bateson smiling at her laptop with headphones on, working on a train" />
-        <span class="learn-tag">Pop your headphones on. This one's worth it. 🎧</span>
       </div>
       <div class="learn-body">
         <div class="learn-head fi">
@@ -301,9 +366,11 @@ footer a:hover{color:var(--navy)}
           <li class="learn-item feature fi">
             <span class="learn-num">4</span>
             <div>
-              <h3><span>Why running ads feels like handing a stranger your credit card</span></h3>
+              <h3>Why running ads feels like handing a stranger your credit card</h3>
               <p>And the one thing that changes that. One kidney dietitian brought in 522 new subscribers at $0.34 each!</p>
-              <span class="tip">Pay extra attention to this part. 😉</span>
+              <span class="tip">
+                <span class="tip-sticker">Don't skip this one. It'll all make sense on Wednesday 😉</span>
+              </span>
             </div>
           </li>
         </ol>
@@ -340,13 +407,24 @@ footer a:hover{color:var(--navy)}
       <p class="wl-bridge">Want this kind of system working for your practice, without having to build it yourself? That's exactly what my team does.</p>
       <span class="eyebrow">Early Black Friday</span>
       <h2>Want first dibs?</h2>
-      <p class="wl-lead">On Wednesday, November 18th, we're opening doors to our Done-for-You Funnel, a full week before everyone else's sales hit your inbox. We build your whole funnel for you, in your voice, in 4 to 6 weeks.</p>
+      <p class="wl-lead">On Wednesday, November 18th, our early Black Friday deal on the Done-for-You Funnel goes live, a full week before everyone else's sales hit your inbox. We build your whole funnel for you, in your voice, in 4 to 6 weeks.</p>
       <ul class="wl-points">
         <li><span class="wl-icon" aria-hidden="true">⏰</span><strong>First access</strong><span>The waitlist hears from me Wednesday morning, hours before anyone else.</span></li>
-        <li class="wl-bonus"><span class="wl-badge">Never offered before</span><strong>A special bonus</strong><span>There's a little something extra for anyone who grabs a spot by Friday, November 20th. We'll share the details when doors open. 👀</span></li>
-        <li><span class="wl-icon" aria-hidden="true">✋</span><strong>Only 5 spots</strong><span>Small on purpose, so every funnel is live for the New Year, when people are looking for help with their health goals.</span></li>
+        <li class="wl-bonus"><span class="wl-badge">Never offered before</span><strong>A special bonus</strong><span>There's a little something extra for anyone who grabs a spot by Friday, November 20th. We'll share the details Wednesday. 👀</span></li>
+        <li><span class="wl-icon" aria-hidden="true">📅</span><strong>Live by mid-January</strong><span>The first 5 spots are guaranteed a live funnel and running ads by mid-January, just in time for New Year health goals.</span></li>
       </ul>
-      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Be the first to know when doors open &rarr;</a>
+      <form class="wl-form js-kit-form" id="wl-form" action="https://app.kit.com/forms/10162398/subscriptions" method="post" data-source="page">
+        <label class="sr-only" for="wl-name">First name</label>
+        <input id="wl-name" type="text" name="fields[first_name]" placeholder="First name" autocomplete="given-name" required />
+        <label class="sr-only" for="wl-email">Email</label>
+        <input id="wl-email" type="email" name="email_address" placeholder="Email address" autocomplete="email" required />
+        <button class="btn btn-p" type="submit">Get first dibs &rarr;</button>
+      </form>
+      <p class="wl-error js-kit-error" id="wl-error" role="alert" hidden>Something went wrong. Please try again, or email us and we'll add you.</p>
+      <div class="wl-done js-kit-done" id="wl-done" role="status" hidden>
+        <strong>You're on the list! 🎉</strong>
+        <span>Watch your inbox Wednesday morning. You'll hear about the deal hours before anyone else.</span>
+      </div>
       <p class="cta-note">Lead magnet, opt-in page, welcome emails and Meta ads, all built for you.</p>
     </div>
   </div>
@@ -360,13 +438,43 @@ footer a:hover{color:var(--navy)}
       <div class="note-photo"><img src="../dfy%20funnel%20bio.jpeg" alt="Whitney Bateson" width="1137" height="1137" loading="lazy" /></div>
       <div>
         <h2>Ready to grow your email list (without more posting)?</h2>
-        <p>That's exactly what the training walks you through, and it's what my team builds for you in our Done-for-You Funnel. When doors open on Wednesday, you'll also get an easy way to share a bit about your practice and get our honest take on whether a funnel is the right next step for you.</p>
+        <p>That's exactly what the training walks you through, and it's what my team builds for you in our Done-for-You Funnel. When the deal goes live on Wednesday, you'll also get an easy way to share a bit about your practice and get our honest take on whether a funnel is the right next step for you.</p>
         <img class="note-sig" src="../Script-Navy.png" alt="Whitney Bateson" width="1545" height="863" loading="lazy" />
         <span class="note-role">MPH, RD · Strategy &amp; Brand Voice</span>
       </div>
     </div>
   </div>
 </section>
+
+<!-- WAITLIST POP-UP (see the CSS comment for when it opens) -->
+<div class="pop" id="pop" role="dialog" aria-modal="true" aria-labelledby="pop-h" hidden>
+  <div class="pop-card">
+    <button class="pop-x js-pop-close" type="button" aria-label="Close">&times;</button>
+    <div class="pop-top">
+      <span class="pop-eyebrow">Psst&hellip; 👀</span>
+      <h2 class="pop-h" id="pop-h">Want first dibs on the deal?</h2>
+    </div>
+    <div class="pop-photo"><img src="../dfy%20funnel%20bio.jpeg" alt="" width="1137" height="1137" loading="lazy" /></div>
+    <div class="pop-body">
+      <div class="pop-ask">
+        <p>Join the waitlist and hear about our early Black Friday deal Wednesday morning, hours before anyone else. The first 5 spots are guaranteed a live funnel by mid-January.</p>
+        <form class="pop-form js-kit-form" action="https://app.kit.com/forms/10162398/subscriptions" method="post" data-source="popup">
+          <label class="sr-only" for="pop-name">First name</label>
+          <input id="pop-name" type="text" name="fields[first_name]" placeholder="First name" autocomplete="given-name" required />
+          <label class="sr-only" for="pop-email">Email</label>
+          <input id="pop-email" type="email" name="email_address" placeholder="Email address" autocomplete="email" required />
+          <button class="btn btn-p" type="submit">Count me in &rarr;</button>
+        </form>
+        <p class="wl-error js-kit-error" role="alert" hidden>Something went wrong. Please try again.</p>
+        <button class="pop-no js-pop-close" type="button">No thanks, I'll pass</button>
+      </div>
+      <div class="pop-done js-kit-done" role="status" hidden>
+        <strong>Yay, you're in! 🎉</strong>
+        <span>Watch your inbox Wednesday morning. You'll hear about the deal before anyone else.</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -375,12 +483,125 @@ footer a:hover{color:var(--navy)}
 </footer>
 
 <script>
-/* ── WAITLIST URL ── paste the link here. Left empty, the buttons scroll
-   to the waitlist section instead of going anywhere. */
-var WAITLIST_URL = '';
+/* ── AUDIO ── the "Prefer to listen?" player.
+   Either paste a full link to the MP3 (e.g. from the WordPress media
+   library: https://whitneybateson.com/wp-content/uploads/...mp3), or leave
+   'training.mp3' and upload that file next to this page on the server.
+   A local file that isn't there yet keeps the player hidden. */
+var AUDIO_URL = 'https://whitneybateson.com/wp-content/uploads/2026/11/BF-of-10_21-Webinar.mp3';
 (function(){
-  if(!WAITLIST_URL) return;
-  document.querySelectorAll('.js-waitlist').forEach(function(a){ a.href = WAITLIST_URL; });
+  if(!AUDIO_URL) return;
+  function show(){
+    document.getElementById('listen-audio').src = AUDIO_URL;
+    document.getElementById('listen').hidden = false;
+  }
+  if(/^https?:\/\//.test(AUDIO_URL)){ show(); return; }
+  if(!window.fetch) return;
+  fetch(AUDIO_URL, { method:'HEAD' }).then(function(res){ if(res.ok) show(); }).catch(function(){});
+})();
+/* Waitlist forms (the one on the page + the pop-up): submit to Kit in the
+   background and show a thank-you in place. Joining in either place swaps
+   BOTH to their thank-you and stops the pop-up from ever showing. With JS
+   off, each form still posts to Kit the normal way. */
+var BF_JOINED_KEY = 'bf26_waitlist_joined';
+function bfStore(k, v){ try{ if(v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); }catch(e){ return null; } }
+function bfShowJoined(){
+  document.querySelectorAll('.js-kit-form').forEach(function(f){ f.hidden = true; });
+  document.querySelectorAll('.js-kit-error').forEach(function(e){ e.hidden = true; });
+  document.querySelectorAll('.js-kit-done').forEach(function(d){ d.hidden = false; });
+  var ask = document.querySelector('.pop-ask'); if(ask) ask.hidden = true;
+}
+(function(){
+  if(bfStore(BF_JOINED_KEY)) bfShowJoined();
+  document.querySelectorAll('.js-to-form').forEach(function(a){
+    a.addEventListener('click', function(){ setTimeout(function(){ var n = document.getElementById('wl-name'); if(n && !n.closest('[hidden]')) n.focus({preventScroll:true}); }, 600); });
+  });
+  document.querySelectorAll('.js-kit-form').forEach(function(form){
+    var scope = form.parentNode.closest('.pop-body') || form.parentNode;
+    var err = scope.querySelector('.js-kit-error');
+    var btn = form.querySelector('button');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      err.hidden = true;
+      btn.disabled = true;
+      var label = btn.innerHTML;
+      btn.textContent = 'Adding you…';
+      fetch(form.action, { method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json' } })
+        .then(function(res){ return res.json().then(function(data){ return { ok:res.ok, data:data }; }); })
+        .then(function(r){
+          if(!r.ok || (r.data && r.data.status && r.data.status !== 'success')) throw new Error('kit');
+          bfStore(BF_JOINED_KEY, '1');
+          bfShowJoined();
+          if(window.gtag) gtag('event', 'generate_lead', { form: 'bf26_waitlist', source: form.getAttribute('data-source') });
+        })
+        .catch(function(){
+          err.hidden = false;
+          btn.disabled = false;
+          btn.innerHTML = label;
+        });
+    });
+  });
+})();
+
+/* Pop-up timing */
+(function(){
+  var pop = document.getElementById('pop');
+  if(!pop) return;
+  var SEEN_KEY = 'bf26_popup_seen', AGAIN_AFTER = 3 * 24 * 3600 * 1000;
+  var forced = /[?&]popup\b/.test(location.search);
+  var opened = false, lastFocus = null, armedAt = Date.now();
+  function eligible(){
+    if(forced) return true;
+    if(opened || bfStore(BF_JOINED_KEY)) return false;
+    var seen = parseInt(bfStore(SEEN_KEY) || '0', 10);
+    if(seen && Date.now() - seen < AGAIN_AFTER) return false;
+    var wl = document.getElementById('waitlist');
+    if(wl){ var r = wl.getBoundingClientRect(); if(r.top < innerHeight * 0.8 && r.bottom > 0) return false; }
+    return true;
+  }
+  function open(){
+    if(!eligible()) return;
+    opened = true;
+    bfStore(SEEN_KEY, String(Date.now()));
+    lastFocus = document.activeElement;
+    pop.hidden = false;
+    requestAnimationFrame(function(){ pop.classList.add('on'); });
+    setTimeout(function(){ var n = document.getElementById('pop-name'); if(n && !n.closest('[hidden]')) n.focus({preventScroll:true}); else pop.querySelector('.pop-x').focus(); }, 320);
+    if(window.gtag) gtag('event', 'bf26_popup_open');
+  }
+  function close(){
+    pop.classList.remove('on');
+    setTimeout(function(){ pop.hidden = true; if(lastFocus && lastFocus.focus) lastFocus.focus({preventScroll:true}); }, 280);
+  }
+  pop.querySelectorAll('.js-pop-close').forEach(function(b){ b.addEventListener('click', close); });
+  pop.addEventListener('click', function(e){ if(e.target === pop) close(); });
+  document.addEventListener('keydown', function(e){
+    if(pop.hidden) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'Tab'){ /* keep focus inside the pop-up */
+      var f = [].filter.call(pop.querySelectorAll('button,input'), function(el){ return !el.closest('[hidden]'); });
+      if(!f.length) return;
+      if(e.shiftKey && document.activeElement === f[0]){ e.preventDefault(); f[f.length-1].focus(); }
+      else if(!e.shiftKey && document.activeElement === f[f.length-1]){ e.preventDefault(); f[0].focus(); }
+    }
+  });
+  if(forced){ setTimeout(open, 400); return; }
+  var watching = false;
+  var cover = document.getElementById('replay-cover');
+  if(cover) cover.addEventListener('click', function(){ watching = true; });
+  var listen = document.getElementById('listen-audio');
+  if(listen) listen.addEventListener('play', function(){ watching = true; });
+  /* desktop: mouse heads up out of the window, after 8s on the page */
+  document.addEventListener('mouseout', function(e){
+    if(!e.relatedTarget && e.clientY <= 0 && Date.now() - armedAt > 8000) open();
+  });
+  /* everyone: scrolled past "what you'll learn", or 40s on the page */
+  var learn = document.querySelector('.learn');
+  window.addEventListener('scroll', function(){
+    if(watching || !learn) return;
+    if(learn.getBoundingClientRect().bottom < innerHeight * 0.5) open();
+  }, { passive:true });
+  setTimeout(function(){ if(!watching) open(); }, 40000);
 })();
 
 /* fade in */
@@ -393,7 +614,7 @@ var WAITLIST_URL = '';
   els.forEach(function(el){ io.observe(el); });
 })();
 
-/* countdown to doors opening */
+/* countdown to the deal going live */
 (function(){
   var target = Date.parse(document.body.getAttribute('data-doors'));
   var box = document.getElementById('tb-count');
