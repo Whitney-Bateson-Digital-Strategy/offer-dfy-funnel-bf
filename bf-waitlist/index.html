@@ -215,6 +215,44 @@ a{color:var(--navy)}
 @media(max-width:640px){.note-sig{margin:18px auto 0}}
 .note-role{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-top:4px;display:block}
 
+/* ── WAITLIST POP-UP ───────────────────────────────────────────────
+   Opens once per visitor (then stays away for 3 days): when the mouse
+   heads for the browser's close/tab bar on desktop, or after they've
+   scrolled past "Here's what you'll learn" / spent 40s on the page.
+   Never opens for someone who already joined, while the waitlist form is
+   on screen, or (on the timer) while they're watching the replay.
+   PREVIEW IT: add ?popup to the page URL.
+─────────────────────────────────────────────────────────────────── */
+.pop{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(1,61,70,.42);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;transition:opacity .28s ease}
+.pop.on{opacity:1}
+.pop-card{position:relative;width:100%;max-width:440px;max-height:calc(100vh - 40px);overflow:auto;background:var(--white);border-radius:18px;box-shadow:0 24px 60px rgba(1,61,70,.28);text-align:center;transform:translateY(16px) scale(.96);transition:transform .32s cubic-bezier(.2,.9,.3,1.2)}
+.pop.on .pop-card{transform:none}
+@media(prefers-reduced-motion:reduce){.pop,.pop-card{transition:none}}
+.pop-top{position:relative;background:var(--blush);padding:30px 24px 52px;overflow:hidden}
+.pop-top::before{content:'';position:absolute;width:190px;height:190px;border-radius:50%;background:var(--lime);right:-60px;top:-80px}
+.pop-top::after{content:'';position:absolute;width:90px;height:90px;border-radius:50%;background:var(--lime-lt);left:-30px;bottom:-40px}
+.pop-eyebrow{position:relative;z-index:1;display:inline-block;background:var(--white);color:var(--coral-dk);font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 13px;border-radius:999px;box-shadow:var(--sh-sm);margin-bottom:12px}
+.pop-h{position:relative;z-index:1;font-size:clamp(1.75rem,6vw,2.1rem);color:var(--navy);line-height:1.12}
+.pop-photo{position:relative;z-index:2;width:84px;height:84px;margin:-42px auto 0;border-radius:50%;overflow:hidden;border:4px solid var(--white);box-shadow:var(--sh-md);background:var(--hi-md)}
+.pop-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.pop-body{padding:14px 28px 24px}
+@media(max-width:420px){.pop-body{padding:12px 20px 20px}}
+.pop-body p{font-size:15.5px;color:var(--text);line-height:1.58;margin:0 0 16px}
+.pop-form{display:flex;flex-direction:column;gap:10px}
+.pop-form input{font-family:var(--body);font-size:16px;color:var(--text);background:var(--cream);border:1.5px solid transparent;border-radius:10px;padding:13px 15px;outline:none;transition:border-color .15s,background .15s}
+.pop-form input::placeholder{color:#8a8a8a}
+.pop-form input:focus{border-color:var(--coral);background:var(--white)}
+.pop-form .btn{font-size:13.5px;padding:15px 20px;border-radius:10px;white-space:normal}
+.pop-form .btn:disabled{opacity:.7;cursor:default;transform:none}
+.pop-no{display:inline-block;margin-top:12px;background:none;border:none;font-family:var(--body);font-size:13.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.pop-no:hover{color:var(--navy)}
+.pop-x{position:absolute;top:12px;right:12px;z-index:3;width:34px;height:34px;border-radius:50%;border:none;background:var(--white);color:var(--navy);font-size:20px;line-height:1;cursor:pointer;box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center}
+.pop-x:hover{background:var(--cream)}
+.pop-x:focus-visible,.pop-no:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+.pop .wl-error{margin-top:10px}
+.pop-done strong{display:block;font-family:var(--head);font-size:1.7rem;color:var(--navy);line-height:1.2;margin-bottom:6px}
+.pop-done span{font-size:15.5px;color:var(--text)}
+
 footer{background:var(--cream);border-top:1px solid var(--border);padding:28px 0;text-align:center;font-size:14px;color:var(--muted)}
 footer a{color:var(--muted)}
 footer a:hover{color:var(--navy)}
@@ -375,15 +413,15 @@ footer a:hover{color:var(--navy)}
         <li class="wl-bonus"><span class="wl-badge">Never offered before</span><strong>A special bonus</strong><span>There's a little something extra for anyone who grabs a spot by Friday, November 20th. We'll share the details Wednesday. 👀</span></li>
         <li><span class="wl-icon" aria-hidden="true">📅</span><strong>Live by mid-January</strong><span>The first 5 spots are guaranteed a live funnel and running ads by mid-January, just in time for New Year health goals.</span></li>
       </ul>
-      <form class="wl-form" id="wl-form" action="https://app.kit.com/forms/10162398/subscriptions" method="post">
+      <form class="wl-form js-kit-form" id="wl-form" action="https://app.kit.com/forms/10162398/subscriptions" method="post" data-source="page">
         <label class="sr-only" for="wl-name">First name</label>
         <input id="wl-name" type="text" name="fields[first_name]" placeholder="First name" autocomplete="given-name" required />
         <label class="sr-only" for="wl-email">Email</label>
         <input id="wl-email" type="email" name="email_address" placeholder="Email address" autocomplete="email" required />
         <button class="btn btn-p" type="submit">Get first dibs &rarr;</button>
       </form>
-      <p class="wl-error" id="wl-error" role="alert" hidden>Something went wrong. Please try again, or email us and we'll add you.</p>
-      <div class="wl-done" id="wl-done" role="status" hidden>
+      <p class="wl-error js-kit-error" id="wl-error" role="alert" hidden>Something went wrong. Please try again, or email us and we'll add you.</p>
+      <div class="wl-done js-kit-done" id="wl-done" role="status" hidden>
         <strong>You're on the list! 🎉</strong>
         <span>Watch your inbox Wednesday morning. You'll hear about the deal hours before anyone else.</span>
       </div>
@@ -408,6 +446,36 @@ footer a:hover{color:var(--navy)}
   </div>
 </section>
 
+<!-- WAITLIST POP-UP (see the CSS comment for when it opens) -->
+<div class="pop" id="pop" role="dialog" aria-modal="true" aria-labelledby="pop-h" hidden>
+  <div class="pop-card">
+    <button class="pop-x js-pop-close" type="button" aria-label="Close">&times;</button>
+    <div class="pop-top">
+      <span class="pop-eyebrow">Psst&hellip; 👀</span>
+      <h2 class="pop-h" id="pop-h">Want first dibs on the deal?</h2>
+    </div>
+    <div class="pop-photo"><img src="../dfy%20funnel%20bio.jpeg" alt="" width="1137" height="1137" loading="lazy" /></div>
+    <div class="pop-body">
+      <div class="pop-ask">
+        <p>Join the waitlist and hear about our early Black Friday deal Wednesday morning, hours before anyone else. The first 5 spots are guaranteed a live funnel by mid-January.</p>
+        <form class="pop-form js-kit-form" action="https://app.kit.com/forms/10162398/subscriptions" method="post" data-source="popup">
+          <label class="sr-only" for="pop-name">First name</label>
+          <input id="pop-name" type="text" name="fields[first_name]" placeholder="First name" autocomplete="given-name" required />
+          <label class="sr-only" for="pop-email">Email</label>
+          <input id="pop-email" type="email" name="email_address" placeholder="Email address" autocomplete="email" required />
+          <button class="btn btn-p" type="submit">Count me in &rarr;</button>
+        </form>
+        <p class="wl-error js-kit-error" role="alert" hidden>Something went wrong. Please try again.</p>
+        <button class="pop-no js-pop-close" type="button">No thanks, I'll pass</button>
+      </div>
+      <div class="pop-done js-kit-done" role="status" hidden>
+        <strong>Yay, you're in! 🎉</strong>
+        <span>Watch your inbox Wednesday morning. You'll hear about the deal before anyone else.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="wrap">
     <p>© 2026 Whitney Bateson &nbsp;·&nbsp; <a href="https://whitneybateson.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> &nbsp;·&nbsp; <a href="https://whitneybateson.com/terms-conditions-dfy-funnel/" target="_blank" rel="noopener">Terms &amp; Conditions</a></p>
@@ -431,38 +499,109 @@ var AUDIO_URL = 'https://whitneybateson.com/wp-content/uploads/2026/11/BF-of-10_
   if(!window.fetch) return;
   fetch(AUDIO_URL, { method:'HEAD' }).then(function(res){ if(res.ok) show(); }).catch(function(){});
 })();
-/* Waitlist form: submit to Kit in the background and show a thank-you in
-   place. If anything goes wrong it shows an error; with JS off the form
-   still posts to Kit the normal way. */
+/* Waitlist forms (the one on the page + the pop-up): submit to Kit in the
+   background and show a thank-you in place. Joining in either place swaps
+   BOTH to their thank-you and stops the pop-up from ever showing. With JS
+   off, each form still posts to Kit the normal way. */
+var BF_JOINED_KEY = 'bf26_waitlist_joined';
+function bfStore(k, v){ try{ if(v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); }catch(e){ return null; } }
+function bfShowJoined(){
+  document.querySelectorAll('.js-kit-form').forEach(function(f){ f.hidden = true; });
+  document.querySelectorAll('.js-kit-error').forEach(function(e){ e.hidden = true; });
+  document.querySelectorAll('.js-kit-done').forEach(function(d){ d.hidden = false; });
+  var ask = document.querySelector('.pop-ask'); if(ask) ask.hidden = true;
+}
 (function(){
-  var form = document.getElementById('wl-form');
-  if(!form) return;
-  var done = document.getElementById('wl-done');
-  var err = document.getElementById('wl-error');
-  var btn = form.querySelector('button');
+  if(bfStore(BF_JOINED_KEY)) bfShowJoined();
   document.querySelectorAll('.js-to-form').forEach(function(a){
-    a.addEventListener('click', function(){ setTimeout(function(){ document.getElementById('wl-name').focus({preventScroll:true}); }, 600); });
+    a.addEventListener('click', function(){ setTimeout(function(){ var n = document.getElementById('wl-name'); if(n && !n.closest('[hidden]')) n.focus({preventScroll:true}); }, 600); });
   });
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    err.hidden = true;
-    btn.disabled = true;
-    var label = btn.innerHTML;
-    btn.textContent = 'Adding you…';
-    fetch(form.action, { method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json' } })
-      .then(function(res){ return res.json().then(function(data){ return { ok:res.ok, data:data }; }); })
-      .then(function(r){
-        if(!r.ok || (r.data && r.data.status && r.data.status !== 'success')) throw new Error('kit');
-        form.hidden = true;
-        done.hidden = false;
-        if(window.gtag) gtag('event', 'generate_lead', { form: 'bf26_waitlist' });
-      })
-      .catch(function(){
-        err.hidden = false;
-        btn.disabled = false;
-        btn.innerHTML = label;
-      });
+  document.querySelectorAll('.js-kit-form').forEach(function(form){
+    var scope = form.parentNode.closest('.pop-body') || form.parentNode;
+    var err = scope.querySelector('.js-kit-error');
+    var btn = form.querySelector('button');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      err.hidden = true;
+      btn.disabled = true;
+      var label = btn.innerHTML;
+      btn.textContent = 'Adding you…';
+      fetch(form.action, { method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json' } })
+        .then(function(res){ return res.json().then(function(data){ return { ok:res.ok, data:data }; }); })
+        .then(function(r){
+          if(!r.ok || (r.data && r.data.status && r.data.status !== 'success')) throw new Error('kit');
+          bfStore(BF_JOINED_KEY, '1');
+          bfShowJoined();
+          if(window.gtag) gtag('event', 'generate_lead', { form: 'bf26_waitlist', source: form.getAttribute('data-source') });
+        })
+        .catch(function(){
+          err.hidden = false;
+          btn.disabled = false;
+          btn.innerHTML = label;
+        });
+    });
   });
+})();
+
+/* Pop-up timing */
+(function(){
+  var pop = document.getElementById('pop');
+  if(!pop) return;
+  var SEEN_KEY = 'bf26_popup_seen', AGAIN_AFTER = 3 * 24 * 3600 * 1000;
+  var forced = /[?&]popup\b/.test(location.search);
+  var opened = false, lastFocus = null, armedAt = Date.now();
+  function eligible(){
+    if(forced) return true;
+    if(opened || bfStore(BF_JOINED_KEY)) return false;
+    var seen = parseInt(bfStore(SEEN_KEY) || '0', 10);
+    if(seen && Date.now() - seen < AGAIN_AFTER) return false;
+    var wl = document.getElementById('waitlist');
+    if(wl){ var r = wl.getBoundingClientRect(); if(r.top < innerHeight * 0.8 && r.bottom > 0) return false; }
+    return true;
+  }
+  function open(){
+    if(!eligible()) return;
+    opened = true;
+    bfStore(SEEN_KEY, String(Date.now()));
+    lastFocus = document.activeElement;
+    pop.hidden = false;
+    requestAnimationFrame(function(){ pop.classList.add('on'); });
+    setTimeout(function(){ var n = document.getElementById('pop-name'); if(n && !n.closest('[hidden]')) n.focus({preventScroll:true}); else pop.querySelector('.pop-x').focus(); }, 320);
+    if(window.gtag) gtag('event', 'bf26_popup_open');
+  }
+  function close(){
+    pop.classList.remove('on');
+    setTimeout(function(){ pop.hidden = true; if(lastFocus && lastFocus.focus) lastFocus.focus({preventScroll:true}); }, 280);
+  }
+  pop.querySelectorAll('.js-pop-close').forEach(function(b){ b.addEventListener('click', close); });
+  pop.addEventListener('click', function(e){ if(e.target === pop) close(); });
+  document.addEventListener('keydown', function(e){
+    if(pop.hidden) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'Tab'){ /* keep focus inside the pop-up */
+      var f = [].filter.call(pop.querySelectorAll('button,input'), function(el){ return !el.closest('[hidden]'); });
+      if(!f.length) return;
+      if(e.shiftKey && document.activeElement === f[0]){ e.preventDefault(); f[f.length-1].focus(); }
+      else if(!e.shiftKey && document.activeElement === f[f.length-1]){ e.preventDefault(); f[0].focus(); }
+    }
+  });
+  if(forced){ setTimeout(open, 400); return; }
+  var watching = false;
+  var cover = document.getElementById('replay-cover');
+  if(cover) cover.addEventListener('click', function(){ watching = true; });
+  var listen = document.getElementById('listen-audio');
+  if(listen) listen.addEventListener('play', function(){ watching = true; });
+  /* desktop: mouse heads up out of the window, after 8s on the page */
+  document.addEventListener('mouseout', function(e){
+    if(!e.relatedTarget && e.clientY <= 0 && Date.now() - armedAt > 8000) open();
+  });
+  /* everyone: scrolled past "what you'll learn", or 40s on the page */
+  var learn = document.querySelector('.learn');
+  window.addEventListener('scroll', function(){
+    if(watching || !learn) return;
+    if(learn.getBoundingClientRect().bottom < innerHeight * 0.5) open();
+  }, { passive:true });
+  setTimeout(function(){ if(!watching) open(); }, 40000);
 })();
 
 /* fade in */
