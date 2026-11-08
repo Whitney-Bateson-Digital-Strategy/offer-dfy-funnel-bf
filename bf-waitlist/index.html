@@ -415,17 +415,21 @@ footer a:hover{color:var(--navy)}
 </footer>
 
 <script>
-/* ── AUDIO ── the "Prefer to listen?" player plays training.mp3 from the
-   same folder as this page (upload it next to index.html on the server).
-   Until that file is there, the player stays hidden. */
+/* ── AUDIO ── the "Prefer to listen?" player.
+   Either paste a full link to the MP3 (e.g. from the WordPress media
+   library: https://whitneybateson.com/wp-content/uploads/...mp3), or leave
+   'training.mp3' and upload that file next to this page on the server.
+   A local file that isn't there yet keeps the player hidden. */
 var AUDIO_URL = 'training.mp3';
 (function(){
-  if(!AUDIO_URL || !window.fetch) return;
-  fetch(AUDIO_URL, { method:'HEAD' }).then(function(res){
-    if(!res.ok) return;
+  if(!AUDIO_URL) return;
+  function show(){
     document.getElementById('listen-audio').src = AUDIO_URL;
     document.getElementById('listen').hidden = false;
-  }).catch(function(){});
+  }
+  if(/^https?:\/\//.test(AUDIO_URL)){ show(); return; }
+  if(!window.fetch) return;
+  fetch(AUDIO_URL, { method:'HEAD' }).then(function(res){ if(res.ok) show(); }).catch(function(){});
 })();
 /* Waitlist form: submit to Kit in the background and show a thank-you in
    place. If anything goes wrong it shows an error; with JS off the form
