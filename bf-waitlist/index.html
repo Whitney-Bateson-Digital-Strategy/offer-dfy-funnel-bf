@@ -132,8 +132,6 @@ a{color:var(--navy)}
 .learn-photo::before{content:'';position:absolute;left:0;bottom:0;width:78%;height:78%;background:var(--lime);border-radius:14px}
 .learn-photo img{position:relative;width:100%;height:auto;aspect-ratio:712/945;object-fit:cover;object-position:50% 35%;border-radius:14px;display:block;box-shadow:var(--sh-md)}
 @media(max-width:860px){.learn-photo{max-width:420px;margin:0 auto;width:100%}.learn-photo img{aspect-ratio:4/4.2}}
-.learn-tag{position:absolute;right:-14px;top:28px;background:var(--white);color:var(--navy);font-family:var(--head);font-style:italic;font-weight:600;font-size:1.15rem;line-height:1.25;padding:12px 18px;border-radius:10px;box-shadow:var(--sh-md);transform:rotate(3deg);max-width:190px}
-@media(max-width:860px){.learn-tag{right:-6px;top:16px;font-size:1rem;padding:10px 14px}}
 .learn-head h2{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:10px}
 @media(max-width:860px){.learn-head{text-align:center}}
 .learn-list{list-style:none;margin-top:18px}
@@ -143,7 +141,12 @@ a{color:var(--navy)}
 .learn-item h3{font-size:1.4rem;line-height:1.25;margin-bottom:6px}
 .learn-item p{font-size:16px;color:var(--muted);line-height:1.6;margin:0}
 .learn-item.feature h3 span{background:var(--hi-md);padding:0 5px;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.learn-item .tip{display:block;margin-top:10px;font-family:var(--head);font-size:1.15rem;font-style:italic;font-weight:600;color:var(--coral-dk)}
+/* "Don't skip this one" note: a dashed, slightly tilted note (deliberately not
+   button-like) beside a little arrow
+   pointing up at the point-4 headline. */
+.learn-item .tip{display:flex;align-items:center;gap:12px;margin-top:14px}
+.tip-arrow{width:34px;height:30px;flex-shrink:0;color:var(--coral)}
+.tip-sticker{display:inline-block;background:var(--lime-lt);color:var(--coral-dk);font-family:var(--head);font-style:italic;font-weight:700;font-size:1.15rem;line-height:1.3;padding:8px 15px 9px;border:1.5px dashed var(--coral);border-radius:10px;transform:rotate(-1.5deg)}
 
 /* ── PROOF: Heather's funnel ── */
 .proof{padding:0 0 88px;background:var(--white)}
@@ -270,7 +273,6 @@ footer a:hover{color:var(--navy)}
       <div class="learn-photo fi">
         <img src="whitney-learn.jpg" width="712" height="945" loading="lazy" decoding="async"
              alt="Whitney Bateson smiling at her laptop with headphones on, working on a train" />
-        <span class="learn-tag">Pop your headphones on. This one's worth it. 🎧</span>
       </div>
       <div class="learn-body">
         <div class="learn-head fi">
@@ -303,7 +305,10 @@ footer a:hover{color:var(--navy)}
             <div>
               <h3><span>Why running ads feels like handing a stranger your credit card</span></h3>
               <p>And the one thing that changes that. One kidney dietitian brought in 522 new subscribers at $0.34 each!</p>
-              <span class="tip">Pay extra attention to this part. 😉</span>
+              <span class="tip">
+                <svg class="tip-arrow" viewBox="0 0 34 30" fill="none" aria-hidden="true" focusable="false"><path d="M4 26C14 26 24 20 27 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M21 9.5L27 4l3.5 7.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="tip-sticker">Don't skip this one. It'll all make sense on Wednesday 😉</span>
+              </span>
             </div>
           </li>
         </ol>
