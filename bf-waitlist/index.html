@@ -79,9 +79,9 @@ a{color:var(--navy)}
 @media(max-width:480px){.btn-lg{display:block;width:100%;text-align:center;white-space:normal;padding:17px 20px}}
 
 /* ── TOP BAR ─────────────────────────────────────────────────────────
-   Counts down to doors opening. TO CHANGE THE TIME: edit data-doors on
+   Counts down to the deal going live. TO CHANGE THE TIME: edit data-doors on
    <body>. Once that time passes the countdown hides and the bar switches
-   to its "doors are open" line.
+   to its "the deal is live" line.
 ─────────────────────────────────────────────────────────────────── */
 .top-bar{position:sticky;top:0;z-index:101;background:var(--white);color:var(--navy);padding:13px 0;border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(2,82,93,.07)}
 .top-row{display:flex;align-items:center;justify-content:center;gap:12px 26px;flex-wrap:wrap}
@@ -108,6 +108,9 @@ a{color:var(--navy)}
 .replay-sub{font-size:17px;color:var(--text);line-height:1.6;margin:0 auto;max-width:620px}
 @media(max-width:640px){.replay-sub{font-size:15.5px}}
 .replay-embed{width:100%;max-width:820px;margin:0 auto}
+.replay-tag{display:flex;justify-content:center;margin:0 auto 14px}
+.replay-tag span{display:inline-flex;align-items:center;gap:9px;background:var(--white);color:var(--navy);font-size:13px;font-weight:700;letter-spacing:.02em;padding:7px 16px 7px 13px;border-radius:999px;box-shadow:var(--sh-sm)}
+.replay-tag span::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--coral);flex-shrink:0}
 .replay-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r-lg);overflow:hidden;background:var(--navy-dk);box-shadow:0 6px 22px rgba(0,0,0,.24)}
 .replay-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .replay-cover{position:absolute;inset:0;width:100%;height:100%;padding:0;border:none;background:none;cursor:pointer;display:block;--play-x:17.8%;--play-y:50%}
@@ -222,11 +225,11 @@ footer a:hover{color:var(--navy)}
       <p class="tb-copy">
         <span class="tb-dot"></span>
         <span>
-          <span class="tb-live">Early Black Friday: Done-for-You Funnel doors open <span class="tb-hl">Wednesday, Nov 18</span></span>
-          <span class="tb-open" hidden>Doors are open! <span class="tb-hl">Only 5 spots this round.</span></span>
+          <span class="tb-live">Our early Black Friday deal on the Done-for-You Funnel goes live <span class="tb-hl">Wednesday, Nov 18</span></span>
+          <span class="tb-open" hidden>Our early Black Friday deal is live! <span class="tb-hl">Only 5 spots this round.</span></span>
         </span>
       </p>
-      <div class="tb-count" id="tb-count" role="timer" aria-label="Time until doors open">
+      <div class="tb-count" id="tb-count" role="timer" aria-label="Time until the deal goes live">
         <span class="tb-unit"><span class="tb-num" data-unit="d">--</span><span class="tb-lbl">Days</span></span>
         <span class="tb-unit"><span class="tb-num" data-unit="h">--</span><span class="tb-lbl">Hrs</span></span>
         <span class="tb-unit"><span class="tb-num" data-unit="m">--</span><span class="tb-lbl">Min</span></span>
@@ -242,10 +245,12 @@ footer a:hover{color:var(--navy)}
 <section class="replay" id="replay">
   <div class="wrap">
     <div class="replay-copy">
-      <span class="eyebrow">Free training replay</span>
+      <span class="eyebrow">Free training</span>
       <h1 class="replay-h">The list-building system that brings in clients <em>while you're off social media</em></h1>
-      <p class="replay-sub">See how health and nutrition practitioners are growing their email lists every day without posting. It's the same system my team builds for you in our Done-for-You Funnel, opening early for Black Friday.</p>
+      <p class="replay-sub">See how health and nutrition practitioners are growing their email lists every day without posting. It's the same system my team builds for you in our Done-for-You Funnel, with an early Black Friday deal coming Wednesday.</p>
     </div>
+    <!-- Replay label. To add the date: "Replay of our live training from Oct 21". -->
+    <div class="replay-tag"><span>Replay of our most recent live training</span></div>
     <div class="replay-embed">
       <div class="replay-frame">
         <button class="replay-cover" id="replay-cover" type="button" data-video-src="https://www.youtube.com/embed/iEU5xkUT2CI?autoplay=1&amp;rel=0" aria-label="Play the training replay">
@@ -266,7 +271,7 @@ footer a:hover{color:var(--navy)}
       <audio id="listen-audio" controls preload="none"></audio>
     </div>
     <div class="replay-cta">
-      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Be the first to know when doors open &rarr;</a>
+      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Be the first to know when the deal goes live &rarr;</a>
       <p class="cta-note">We'll email you Wednesday morning, hours before everyone else hears about it.</p>
     </div>
   </div>
@@ -351,13 +356,13 @@ footer a:hover{color:var(--navy)}
       <p class="wl-bridge">Want this kind of system working for your practice, without having to build it yourself? That's exactly what my team does.</p>
       <span class="eyebrow">Early Black Friday</span>
       <h2>Want first dibs?</h2>
-      <p class="wl-lead">On Wednesday, November 18th, we're opening doors to our Done-for-You Funnel, a full week before everyone else's sales hit your inbox. We build your whole funnel for you, in your voice, in 4 to 6 weeks.</p>
+      <p class="wl-lead">On Wednesday, November 18th, our early Black Friday deal on the Done-for-You Funnel goes live, a full week before everyone else's sales hit your inbox. We build your whole funnel for you, in your voice, in 4 to 6 weeks.</p>
       <ul class="wl-points">
         <li><span class="wl-icon" aria-hidden="true">⏰</span><strong>First access</strong><span>The waitlist hears from me Wednesday morning, hours before anyone else.</span></li>
-        <li class="wl-bonus"><span class="wl-badge">Never offered before</span><strong>A special bonus</strong><span>There's a little something extra for anyone who grabs a spot by Friday, November 20th. We'll share the details when doors open. 👀</span></li>
+        <li class="wl-bonus"><span class="wl-badge">Never offered before</span><strong>A special bonus</strong><span>There's a little something extra for anyone who grabs a spot by Friday, November 20th. We'll share the details Wednesday. 👀</span></li>
         <li><span class="wl-icon" aria-hidden="true">✋</span><strong>Only 5 spots</strong><span>Small on purpose, so every funnel is live for the New Year, when people are looking for help with their health goals.</span></li>
       </ul>
-      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Be the first to know when doors open &rarr;</a>
+      <a class="btn btn-p btn-lg js-waitlist" href="#waitlist">Be the first to know when the deal goes live &rarr;</a>
       <p class="cta-note">Lead magnet, opt-in page, welcome emails and Meta ads, all built for you.</p>
     </div>
   </div>
@@ -371,7 +376,7 @@ footer a:hover{color:var(--navy)}
       <div class="note-photo"><img src="../dfy%20funnel%20bio.jpeg" alt="Whitney Bateson" width="1137" height="1137" loading="lazy" /></div>
       <div>
         <h2>Ready to grow your email list (without more posting)?</h2>
-        <p>That's exactly what the training walks you through, and it's what my team builds for you in our Done-for-You Funnel. When doors open on Wednesday, you'll also get an easy way to share a bit about your practice and get our honest take on whether a funnel is the right next step for you.</p>
+        <p>That's exactly what the training walks you through, and it's what my team builds for you in our Done-for-You Funnel. When the deal goes live on Wednesday, you'll also get an easy way to share a bit about your practice and get our honest take on whether a funnel is the right next step for you.</p>
         <img class="note-sig" src="../Script-Navy.png" alt="Whitney Bateson" width="1545" height="863" loading="lazy" />
         <span class="note-role">MPH, RD · Strategy &amp; Brand Voice</span>
       </div>
@@ -412,7 +417,7 @@ var AUDIO_URL = '';
   els.forEach(function(el){ io.observe(el); });
 })();
 
-/* countdown to doors opening */
+/* countdown to the deal going live */
 (function(){
   var target = Date.parse(document.body.getAttribute('data-doors'));
   var box = document.getElementById('tb-count');
