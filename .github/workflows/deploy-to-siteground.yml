@@ -1,3 +1,4 @@
+
 name: Deploy to SiteGround
 
 on:
@@ -19,7 +20,7 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./
-          server-dir: /public_html/bf-funnel/
+          server-dir: /public_html/dfy-funnel-bf/
           exclude: |
             **/.git*
             **/.git*/**
