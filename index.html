@@ -81,7 +81,7 @@ section{padding:80px 0}
 
    TO CHANGE THE DEADLINE: edit data-deadline on <body>. It drives every
    countdown on the page. Dates written out in copy are separate - search
-   the file for "September 25".
+   the file for "November 20".
    TO SWITCH TO THE WHITE VERSION: add class="offer-bar offer-bar-light"
    on the <div class="offer-bar"> in the markup.
 ─────────────────────────────────────────────────────────────────── */
@@ -619,7 +619,7 @@ footer a:hover{color:var(--white)}
 
    THE DEADLINE lives in ONE place: data-deadline on <body>. The written
    dates in this section's copy still have to be changed by hand - search
-   for "September 25". */
+   for "November 20". */
 #included{padding-top:48px;padding-bottom:92px}
 @media(max-width:640px){#how{padding-bottom:28px}#included{padding-top:36px;padding-bottom:64px}}
 .bonus-head{max-width:760px;margin:0 auto 30px;text-align:center}
@@ -795,18 +795,92 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
   font-variant-numeric:lining-nums tabular-nums;
   font-feature-settings:"lnum" 1,"tnum" 1;
 }
+
+/* ── BLACK FRIDAY SWITCH (see the script right after <body>) ── */
+.bf-after{display:none!important}
+.offer-over .bf-only{display:none!important}
+.offer-over .bf-after{display:revert!important}
+.offer-over .js-countdown,.offer-over .bonus-timer,.offer-over .sb-live{display:none!important}
+.offer-over .sb-expired{display:inline!important}
+
+/* Small "skip the fit check and buy" line that sits under the main buttons */
+.cta-buy{font-size:14px;color:var(--muted);margin:14px 0 0;line-height:1.5}
+.cta-buy a{color:var(--navy);font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.cta-buy a:hover{color:var(--coral-dk)}
+#close .cta-buy{color:rgba(255,255,255,.85);margin-top:18px}
+#close .cta-buy a{color:var(--lime)}
+#close .cta-buy a:hover{color:var(--white)}
+#pricing .cta-buy{text-align:center;font-size:15px;margin:16px 0 18px}
+
+/* "Prefer to listen?" bar under the training video (same as the waitlist page) */
+.listen{max-width:780px;margin:16px auto 0;background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-sm);padding:12px 14px 12px 20px;display:flex;align-items:center;gap:16px}
+.listen-label{flex-shrink:0;font-family:var(--head);font-style:italic;font-weight:700;font-size:1.2rem;color:var(--navy);line-height:1.2}
+.listen-label small{display:block;font-family:var(--body);font-style:normal;font-weight:600;font-size:12.5px;color:var(--muted);margin-top:2px}
+.listen audio{flex:1;min-width:0;width:100%;height:42px}
+@media(max-width:640px){.listen{flex-direction:column;align-items:stretch;gap:8px;padding:14px 14px 12px;text-align:center}.listen audio{flex:none}}
+
+/* Early Black Friday bonus card + "first 5" line in the bonus section */
+.bf-bonus{display:flex;align-items:center;gap:26px;max-width:860px;margin:22px auto 0;background:var(--white);border:1px solid var(--hi-md);border-left:4px solid var(--coral);border-radius:var(--r);padding:24px 28px;text-align:left;box-shadow:0 4px 18px rgba(2,82,93,.08)}
+.bf-bonus-body{flex:1;min-width:0}
+.bf-bonus-tag{display:inline-block;background:var(--lime);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;border-radius:999px;padding:5px 12px;margin-bottom:10px}
+.bf-bonus h3{font-family:var(--head);font-size:1.5rem;font-weight:600;color:var(--navy);margin-bottom:8px;line-height:1.22}
+.bf-bonus p{font-size:15.5px;color:var(--text);line-height:1.6;margin:0}
+.bf-bonus-fine{display:block;font-size:13px;color:var(--muted);font-style:italic;margin-top:8px}
+.bf-bonus-price{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:8px}
+@media(max-width:700px){.bf-bonus{flex-direction:column-reverse;align-items:flex-start;gap:14px;padding:22px}.bf-bonus-price{flex-direction:row;align-items:baseline;gap:14px}}
+.bf-first5{max-width:860px;margin:18px auto 0;text-align:center;font-size:16px;line-height:1.6;color:var(--text)}
+.bf-first5 strong{color:var(--navy)}
+.p-first5{font-size:15px;line-height:1.5;color:var(--navy);font-weight:600;background:var(--hi);border-radius:var(--r);padding:10px 14px;margin:14px 0 0}
+
+/* ── FUNNEL FIT CHECK section ── */
+#fit-check{background:var(--white);text-align:center;padding:84px 0}
+.fc-box{max-width:720px;margin:0 auto}
+.fc-eyebrow{display:block;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-dk);margin-bottom:14px}
+#fit-check h2{font-size:clamp(1.75rem,4vw,2.6rem);margin-bottom:16px}
+.fc-lead{font-size:17px;line-height:1.65;color:var(--text);max-width:620px;margin:0 auto 22px}
+.fc-points{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;margin:0 0 28px}
+.fc-points li{background:var(--hi);border-radius:999px;padding:7px 16px;font-size:14px;font-weight:600;color:var(--navy)}
+.fc-deadline{font-size:14px;color:var(--text);font-style:italic;font-weight:600;margin:14px 0 0}
+.fc-form{margin-top:30px;text-align:center}
+.fc-form iframe{display:block;width:100%;height:900px;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--soft)}
+@media(max-width:640px){.fc-form iframe{height:78vh;min-height:560px}}
+.fc-alt{font-size:14px;color:var(--muted);margin:12px 0 0}
+.fc-alt a{color:var(--navy);font-weight:700}
 </style>
 </head>
-<body data-deadline="2026-09-25T23:59:59-04:00">
+<body data-deadline="2026-11-20T23:59:59-05:00">
+<script>
+/* BLACK FRIDAY SWITCH. When the deadline on <body> passes, the page turns
+   itself back into the regular offer: anything with class "bf-only" hides,
+   anything with class "bf-after" shows, and every buy link swaps to its
+   data-href-after address (checkout without the coupon).
+   TO PREVIEW THE AFTER VERSION: add ?after to the page URL. */
+(function(){
+  var t = Date.parse(document.body.getAttribute('data-deadline') || '');
+  var forced = /[?&]after\b/.test(location.search);
+  if(!forced && (!t || isNaN(t))) return;
+  function links(){
+    var a = document.querySelectorAll('a[data-href-after]');
+    for(var i = 0; i < a.length; i++) a[i].href = a[i].getAttribute('data-href-after');
+  }
+  function over(){
+    document.documentElement.classList.add('offer-over');
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', links); else links();
+  }
+  var left = t - Date.now();
+  if(forced || left <= 0) over();
+  else if(left < 2147483647) setTimeout(over, left);
+})();
+</script>
 
 <!-- ══ STICKY OFFER BAR ════════════════════════════════════════════════
      Offer + live countdown + button in one sticky band. This replaces the
      old thin urgency strip and the white nav bar.
 
      THE DEADLINE for the whole page is data-deadline on <body> (ISO 8601
-     with a UTC offset; Eastern, so -04:00 on that date). Every countdown
+     with a UTC offset; Eastern, so -05:00 on that date). Every countdown
      reads it. Dates WRITTEN OUT in copy are separate - search the file for
-     "September 25" and change those by hand.
+     "November 20" and change those by hand.
 
      WHITE VERSION: change class="offer-bar" to
      class="offer-bar offer-bar-light".
@@ -819,7 +893,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <p class="sb-copy">
         <span class="sb-dot"></span>
         <span>
-          <span class="sb-live">Get your funnel plus <span class="sb-hl">$1,491 in bonuses and discounts</span> when you enroll by Friday, September 25.</span>
+          <span class="sb-live">Early Black Friday: get your funnel plus <span class="sb-hl">$1,641 in bonuses and savings</span> when you enroll by Friday, November 20.</span>
           <span class="sb-expired" hidden>Get your funnel built for you &ndash; <span class="sb-hl">one team, start to launch.</span></span>
         </span>
       </p>
@@ -830,56 +904,12 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <span class="sb-unit"><span class="sb-num" data-unit="m">--</span><span class="sb-lbl">Min</span></span>
         <span class="sb-unit sb-unit-sec"><span class="sb-num" data-unit="s">--</span><span class="sb-lbl">Sec</span></span>
       </div>
-      <a class="btn btn-p sb-cta" href="#pricing">Claim your spot</a>
+      <a class="btn btn-p sb-cta" href="#fit-check">See if it&rsquo;s a fit</a>
       </div>
     </div>
   </div>
 </div>
 
-
-<!-- ══ REPLAY BANNER ═══════════════════════════════════════════════════
-     VISIBLE, with the replay wired up: the title card below swaps for
-     the embed on click.
-
-     TO SWAP THE VIDEO: change the ID in data-video-src on #replay-cover
-     (https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0).
-
-     The old hero overview video, if you want it here in the meantime:
-     https://www.youtube.com/embed/p16fu7r4zuc?rel=0
-
-     TO HIDE THE WHOLE BANNER: add `hidden` to the <section> tag below.
-     Headline and subhead are placeholder copy - swap for real wording.
-════════════════════════════════════════════════════════════════════ -->
-<section class="replay-banner" id="replay">
-  <div class="wrap">
-    <div class="replay-stack">
-      <div class="replay-copy">
-        <span class="replay-eyebrow">Watch the replay</span>
-        <h2 class="replay-h">The List Building System That Brings in Clients While You're Off Social Media</h2>
-        <p class="replay-sub">See how practitioners like you are growing audiences of future clients without endless posting, then scroll down for a special offer to have us build yours.</p>
-      </div>
-      <div class="replay-embed">
-        <div class="replay-frame">
-          <!-- The still is the branded title card, which repeats the headline now
-               sitting above the video. For a plain still of Whitney instead,
-               swap the src below for video-overlay.png and set
-               --play-x back to 50% on .replay-cover in the CSS. -->
-          <button class="replay-cover" id="replay-cover" type="button" data-video-src="https://www.youtube.com/embed/FRNAHlJ1anA?autoplay=1&amp;rel=0" aria-label="Play the training replay">
-            <img class="replay-cover-img" src="Funnel%20Webinar%20V1%20(1).png" width="1920" height="1080"
-                 alt="Free training: the list-building system that brings in clients while you're off social media" />
-            <span class="replay-play">
-              <svg viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                <circle cx="38" cy="38" r="38" fill="#ffffff" fill-opacity="0.95"/>
-                <polygon points="31,23 31,53 55,38" fill="#02525d"/>
-              </svg>
-            </span>
-          </button>
-          <iframe id="replay-iframe" src="" title="The List Building System That Brings in Clients While You&rsquo;re Off Social Media" hidden loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- HERO -->
 <section id="hero">
@@ -894,9 +924,10 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           A sustainable marketing system that puts you in front of new people and grows your audience every day &ndash; <strong>built for you, in your voice</strong>, by a team who gets the health and nutrition world.
         </p>
         <div class="hero-ctas fi d3">
-          <a class="btn btn-p" href="#pricing">Book Your Funnel</a>
+          <a class="btn btn-p" href="#fit-check">Take the Funnel Fit Check</a>
         </div>
         <p class="hero-note fi d4">You tell us about your business, we handle the rest.</p>
+        <p class="cta-buy fi d4">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
       </div>
       <div class="hero-photo-col fi d2">
         <!-- TO SWAP THE PHOTO: drop the new file in and update the src + alt below.
@@ -1062,8 +1093,59 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <div class="section-cta fi d1">
         <p class="section-cta-line">Ready to see what we'd build for you?</p>
-        <a class="btn btn-light" href="#pricing">Get started</a>
+        <a class="btn btn-light" href="#fit-check">Take the Funnel Fit Check</a>
         <p class="section-cta-sub">Or keep reading. We'll walk you through exactly what's included.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ REPLAY BANNER ═══════════════════════════════════════════════════
+     The training video. Sits after the problem section (not at the top),
+     as an optional watch for anyone who hasn't seen the training yet.
+     The title card below swaps for the embed on click.
+
+     TO SWAP THE VIDEO: change the ID in data-video-src on #replay-cover
+     (https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0).
+
+     The old hero overview video, if you want it here in the meantime:
+     https://www.youtube.com/embed/p16fu7r4zuc?rel=0
+
+     TO HIDE THE WHOLE BANNER: add `hidden` to the <section> tag below.
+     THE AUDIO PLAYER under it reads AUDIO_URL in the script near the
+     bottom of the file.
+════════════════════════════════════════════════════════════════════ -->
+<section class="replay-banner" id="replay">
+  <div class="wrap">
+    <div class="replay-stack">
+      <div class="replay-copy">
+        <span class="replay-eyebrow">Free training</span>
+        <h2 class="replay-h">Haven&rsquo;t watched the training yet?</h2>
+        <p class="replay-sub">See how health and nutrition practitioners are growing their email lists every day without posting. It&rsquo;s the same system we build for you in the Done-for-You Funnel.</p>
+      </div>
+      <div class="replay-embed">
+        <div class="replay-frame">
+          <!-- The still is the branded title card, which repeats the headline now
+               sitting above the video. For a plain still of Whitney instead,
+               swap the src below for video-overlay.png and set
+               --play-x back to 50% on .replay-cover in the CSS. -->
+          <button class="replay-cover" id="replay-cover" type="button" data-video-src="https://www.youtube.com/embed/iEU5xkUT2CI?autoplay=1&amp;rel=0" aria-label="Play the training replay">
+            <img class="replay-cover-img" src="Funnel%20Webinar%20V1%20(1).png" width="1920" height="1080"
+                 alt="Free training: the list-building system that brings in clients while you're off social media" />
+            <span class="replay-play">
+              <svg viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <circle cx="38" cy="38" r="38" fill="#ffffff" fill-opacity="0.95"/>
+                <polygon points="31,23 31,53 55,38" fill="#02525d"/>
+              </svg>
+            </span>
+          </button>
+          <iframe id="replay-iframe" src="" title="The List Building System That Brings in Clients While You&rsquo;re Off Social Media" hidden loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="listen" id="listen" hidden>
+        <span class="listen-label">🎧 Prefer to listen?<small>Keeps playing with your phone locked</small></span>
+        <audio id="listen-audio" controls preload="none"></audio>
       </div>
     </div>
   </div>
@@ -1153,8 +1235,8 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
   <div class="wrap">
 
     <div class="bonus-head fi">
-      <span class="bonus-eyebrow">
-        <span class="bonus-eyebrow-dot"></span>Only until Friday, September 25
+      <span class="bonus-eyebrow bf-only">
+        <span class="bonus-eyebrow-dot"></span>Only until Friday, November 20
       </span>
       <h2>Plus, these come with it.</h2>
     </div>
@@ -1215,10 +1297,27 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
     </div>
 
+    <!-- EARLY BLACK FRIDAY EXTRAS. Both blocks hide themselves when the
+         deadline passes (class "bf-only"). To change the credit amount,
+         also update the total below, the sticky bar ($1,641), the pricing
+         box and the ads FAQ. -->
+    <div class="bf-bonus bf-only fi d2">
+      <div class="bf-bonus-body">
+        <span class="bf-bonus-tag">Early Black Friday bonus</span>
+        <h3>$150 in ad credit, on us</h3>
+        <p>That covers about your first month of ads at $5 a day, so you can watch new subscribers come in before you spend a dime of your own. <span class="bf-bonus-fine">Credit is reimbursed against your first Meta ads receipt.</span></p>
+      </div>
+      <div class="bf-bonus-price">
+        <span class="bonus-was">$150</span>
+        <span class="bonus-now">Yours free</span>
+      </div>
+    </div>
+    <p class="bf-first5 bf-only fi d2">🗓️ <strong>And the first 5 people to sign up are guaranteed a live funnel and running ads by mid-January</strong>, just in time for New Year health goals.</p>
+
     <div class="bonus-total fi d3">
       <span class="bonus-total-label">Total bonus value</span>
-      <span class="bonus-total-num">$1,091</span>
-      <span class="bonus-total-note">Yours at no extra cost when you enroll by Friday, September 25.</span>
+      <span class="bonus-total-num"><span class="bf-only">$1,241</span><span class="bf-after">$1,091</span></span>
+      <span class="bonus-total-note"><span class="bf-only">Yours at no extra cost when you enroll by Friday, November 20.</span><span class="bf-after">Yours at no extra cost with your funnel.</span></span>
     </div>
 
     <figure class="pull-quote fi d3">
@@ -1229,8 +1328,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
     </figure>
 
     <div class="bonus-cta fi d3">
-      <p class="bonus-cta-line">Yours when you enroll by Friday.</p>
-      <a class="btn btn-p" href="#pricing">Claim your spot</a>
+      <p class="bonus-cta-line"><span class="bf-only">Yours when you enroll by Friday.</span><span class="bf-after">Included with your funnel.</span></p>
+      <a class="btn btn-p" href="#fit-check">Take the Funnel Fit Check</a>
+      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
     </div>
 
   </div>
@@ -1321,8 +1421,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
     <div class="section-cta section-cta-left fi d2">
       <p class="section-cta-line">Want this running in the background of your practice?</p>
-      <a class="btn btn-p" href="#pricing">Get started</a>
-      <p class="section-cta-sub">Special pricing ends Friday, September 25.</p>
+      <a class="btn btn-p" href="#fit-check">Take the Funnel Fit Check</a>
+      <p class="section-cta-sub bf-only">Early Black Friday pricing ends Friday, November 20.</p>
+      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
     </div>
   </div>
 </section>
@@ -1430,7 +1531,8 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
     <p class="cmp-tagline fi d2">The expertise of industry specialists. The personal attention of a small team. <strong>Without the agency price tag.</strong></p>
 
     <div class="cmp-cta-wrap fi d3">
-      <a href="#pricing" class="btn btn-p">Yes, this is what I need →</a>
+      <a href="#fit-check" class="btn btn-p">See if it&rsquo;s a fit for you →</a>
+      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
     </div>
   </div>
 </section>
@@ -1521,7 +1623,8 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
     </div>
     <div class="fit-cta fi d3">
-      <a class="btn btn-p" href="#pricing">Ready? Grab Your Spot &rarr;</a>
+      <a class="btn btn-p" href="#fit-check">Not sure yet? Take the Funnel Fit Check &rarr;</a>
+      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
     </div>
   </div>
 </section>
@@ -1680,12 +1783,13 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         Done-For-You Funnel
       </div>
 
-      <!-- LIMITED-TIME PRICE. To go back to full price: delete .price-was and
-           .price-note, and set .price-big to $1,997. -->
-      <span class="price-was">$1,997</span>
-      <span class="price-big">$1,597</span>
-      <p class="price-note"><strong>Save $400.</strong> Special pricing ends Friday, September 25.</p>
+      <!-- LIMITED-TIME PRICE. Goes back to $1,997 by itself when the deadline
+           on <body> passes (bf-only / bf-after). -->
+      <span class="price-was bf-only">$1,997</span>
+      <span class="price-big"><span class="bf-only">$1,597</span><span class="bf-after">$1,997</span></span>
+      <p class="price-note bf-only"><strong>Save $400.</strong> Early Black Friday pricing ends Friday, November 20.</p>
       <p class="p-caption">One-time payment. No ongoing fees from us.</p>
+      <p class="p-first5 bf-only">🗓️ The first 5 to sign up are guaranteed a live funnel and running ads by mid-January.</p>
 
       <hr class="p-divider"/>
 
@@ -1699,6 +1803,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <li class="inc-bonus"><span><span class="inc-bonus-tag">Bonus</span><strong>Your Funnel Command Center</strong> – Notion hub with walkthrough videos and every file we built</span></li>
         <li class="inc-bonus"><span><span class="inc-bonus-tag">Bonus</span><strong>7 days of support</strong> while your ads go live</span></li>
         <li class="inc-bonus"><span><span class="inc-bonus-tag">Bonus</span><strong>Ads Made Simple course</strong> – learn how to run, edit, and monitor your own ads</span></li>
+        <li class="inc-bonus bf-only"><span><span class="inc-bonus-tag">Black Friday</span><strong>$150 in ad credit</strong> – about your first month of ads, on us</span></li>
       </ul>
 
       <hr class="p-divider"/>
@@ -1708,7 +1813,10 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <hr class="p-divider"/>
 
 
-      <a class="btn btn-p btn-block" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=SAVE400" target="_blank" rel="noopener">Get started · $1,597</a>
+      <!-- MAIN BUTTON = Funnel Fit Check. The small line under it is the
+           direct checkout link (coupon comes off by itself after the deadline). -->
+      <a class="btn btn-p btn-block" href="#fit-check">Take the Funnel Fit Check</a>
+      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot for <span class="bf-only">$1,597</span><span class="bf-after">$1,997</span> &rarr;</a></p>
       <!-- Accepted cards, shown under the buy button. Inline SVG, no image files. -->
       <div class="p-pay" aria-label="Secure checkout. We accept Visa, Mastercard, American Express and Discover.">
         <span class="p-pay-secure"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 0 1 6 0v3H9z"/></svg>Secure checkout</span>
@@ -1720,10 +1828,35 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </span>
       </div>
       <p class="p-split">Payment plan also available</p>
+    </div>
+  </div>
+</section>
 
-      <div class="p-call">
-        <p class="p-call-q">Want to chat first?</p>
-        <a class="p-call-link" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a 20-min call with Whitney →</a>
+
+<!-- ══ FUNNEL FIT CHECK ════════════════════════════════════════════════
+     Every main button on the page jumps here. "Start" opens the Airtable
+     form in place; the link under the form opens it in a new tab.
+
+     THE FORM LINK is FIT_CHECK_URL in the script near the bottom of the
+     file (the form's share link from Airtable).
+════════════════════════════════════════════════════════════════════ -->
+<section id="fit-check">
+  <div class="wrap">
+    <div class="fc-box fi">
+      <span class="fc-eyebrow">The Funnel Fit Check</span>
+      <h2>Not sure a funnel is the right move? <span class="hl">Let&rsquo;s find out.</span></h2>
+      <p class="fc-lead">Tell us who you help, what you offer and how clients find you today. My team and I read every one, then email you our honest take: whether a funnel makes sense for your practice right now, and what we&rsquo;d focus on first if it doesn&rsquo;t.</p>
+      <ul class="fc-points">
+        <li>Takes about 5 minutes</li>
+        <li>A personal reply in 1&ndash;2 business days</li>
+        <li>No call needed</li>
+      </ul>
+      <button class="btn btn-p" id="fc-open" type="button">Start my Funnel Fit Check &rarr;</button>
+      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
+      <p class="fc-deadline bf-only">Early Black Friday pricing ends Friday, November 20, so the sooner you send it in, the sooner you&rsquo;ll hear back.</p>
+      <div class="fc-form" id="fc-form" hidden>
+        <iframe id="fc-iframe" title="Funnel Fit Check form" src="about:blank"></iframe>
+        <p class="fc-alt">Form not loading? <a id="fc-newtab" href="#" target="_blank" rel="noopener">Open it in a new tab &rarr;</a></p>
       </div>
     </div>
   </div>
@@ -1755,7 +1888,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <details class="faq-item">
         <summary class="faq-q">How much will the ads cost me?</summary>
-        <div class="faq-a">About $150/month at $5/day, paid directly to Meta. That's separate from the $1,597 you pay us. You own the ad account, control the budget, and can pause anytime.</div>
+        <div class="faq-a">About $150/month at $5/day, paid directly to Meta. That's separate from what you pay us. You own the ad account, control the budget, and can pause anytime. <span class="bf-only">Sign up by Friday, November 20 and your first $150 is on us, reimbursed against your first Meta ads receipt.</span></div>
       </details>
 
       <details class="faq-item">
@@ -1768,7 +1901,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <details class="faq-item">
         <summary class="faq-q">Will this work for my specific practice?</summary>
-        <div class="faq-a">If you have a clear service you're offering and are ready to start growing your list and bringing in more leads, this will work for you. The funnel we build is designed to be simple, effective, and tailored to your specific audience and niche, not a generic template. If you're not sure, the 20-minute call is the perfect place to talk it through before committing.</div>
+        <div class="faq-a">If you have a clear service you're offering and are ready to start growing your list and bringing in more leads, this will work for you. The funnel we build is designed to be simple, effective, and tailored to your specific audience and niche, not a generic template. If you're not sure, the <a href="#fit-check">Funnel Fit Check</a> is the perfect place to find out before committing.</div>
       </details>
 
       <details class="faq-item">
@@ -1811,11 +1944,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
   <div class="wrap">
     <div class="fi">
       <h2>If you've been meaning to build this for a while, <span class="ul">this is the shortcut</span>.</h2>
-      <p class="sub"><span class="nb">$1,597 one-time, until Friday, September 25.</span> <span class="nb">We do the work. You finally get a system bringing in new leads while you focus on your practice.</span></p>
+      <p class="sub"><span class="nb"><span class="bf-only">$1,597 one-time, until Friday, November 20.</span><span class="bf-after">$1,997 one-time.</span></span> <span class="nb">We do the work. You finally get a system bringing in new leads while you focus on your practice.</span></p>
       <div class="close-ctas">
-        <a class="btn btn-p" href="#pricing">Get started · $1,597</a>
-        <a class="btn btn-s" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a call first</a>
+        <a class="btn btn-p" href="#fit-check">Take the Funnel Fit Check</a>
       </div>
+      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
       <p class="close-note">Questions? Email me at <a href="mailto:info@whitneybateson.com">info@whitneybateson.com</a></p>
     </div>
   </div>
@@ -2032,6 +2165,39 @@ els.forEach(el => io.observe(el));
 
   tick();
   var timer = setInterval(tick, 1000);
+})();
+</script>
+
+<script>
+/* ── FUNNEL FIT CHECK ── the form link. Paste the form's share link from
+   Airtable here (Share form > copy link). The page builds the embed
+   address from it. */
+var FIT_CHECK_URL = 'https://airtable.com/appT34gYP3ckqat1B/pagWPjwEyPQuBy6sM/form';
+(function(){
+  var btn = document.getElementById('fc-open');
+  var box = document.getElementById('fc-form');
+  var frame = document.getElementById('fc-iframe');
+  var alt = document.getElementById('fc-newtab');
+  if(!btn || !box || !frame) return;
+  if(alt) alt.href = FIT_CHECK_URL;
+  btn.addEventListener('click', function(){
+    if(!FIT_CHECK_URL) return;
+    frame.src = FIT_CHECK_URL.replace('airtable.com/', 'airtable.com/embed/');
+    box.hidden = false;
+    btn.hidden = true;
+    if(window.gtag) gtag('event', 'bf26_fit_check_open');
+    box.scrollIntoView({ block:'nearest' });
+  });
+})();
+
+/* ── AUDIO ── the "Prefer to listen?" player under the training video.
+   Paste a full link to the MP3. Leave it empty to hide the player. */
+var AUDIO_URL = 'https://whitneybateson.com/wp-content/uploads/2026/11/BF-of-10_21-Webinar.mp3';
+(function(){
+  var bar = document.getElementById('listen'), audio = document.getElementById('listen-audio');
+  if(!AUDIO_URL || !bar || !audio) return;
+  audio.src = AUDIO_URL;
+  bar.hidden = false;
 })();
 </script>
 
