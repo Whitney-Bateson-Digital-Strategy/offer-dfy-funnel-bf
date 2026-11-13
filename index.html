@@ -821,23 +821,34 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
 /* Early Black Friday bonus card + "first 5" line in the bonus section */
 /* Early Black Friday gift card: the headline bonus, sits ABOVE the three
-   bonus cards as a full-width coral banner so it doesn't blend in. */
-.bf-bonus{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;align-items:center;gap:44px;margin:0 0 36px;background:linear-gradient(135deg,#ffa47f 0%,#ff9067 100%);border-radius:var(--r-lg);padding:40px 52px;text-align:left;color:var(--white);box-shadow:0 16px 40px rgba(255,127,80,.22)}
-.bf-bonus-body{position:relative;z-index:1;min-width:0}
-.bf-bonus-tag{display:inline-block;background:var(--navy);color:var(--lime);font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:6px 14px;margin-bottom:16px}
-.bf-bonus h3{font-family:var(--head);font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:600;color:var(--navy);margin-bottom:12px;line-height:1.1}
-.bf-bonus p{font-size:17px;color:var(--navy);line-height:1.6;margin:0;max-width:560px}
-.bf-bonus-fine{display:block;font-size:14px;color:var(--navy);opacity:.85;font-style:italic;font-weight:600;margin-top:12px}
+   bonus cards as a "golden ticket" (deep navy, ticket notches, dashed tear
+   line) so it doesn't blend in. The notches are circles in the page's cream
+   colour; if the section background changes, change them to match. */
+.bf-bonus{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:56px;margin:0 0 36px;background:linear-gradient(135deg,#03606c 0%,#013f47 100%);border-radius:var(--r-lg);padding:46px 56px;text-align:left;color:var(--white);box-shadow:0 22px 50px rgba(2,82,93,.32)}
+.bf-bonus::before,.bf-bonus::after{content:'';position:absolute;top:50%;width:46px;height:46px;margin-top:-23px;border-radius:50%;background:var(--cream)}
+.bf-bonus::before{left:-23px}
+.bf-bonus::after{right:-23px}
+.bf-bonus-body{position:relative;z-index:1;min-width:0;border-right:3px dashed rgba(227,246,150,.4);padding-right:56px}
+.bf-bonus-tag{display:inline-block;background:var(--coral);color:var(--white);font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:6px 14px;margin-bottom:16px}
+.bf-bonus h3{font-family:var(--head);font-size:clamp(2rem,4vw,3.1rem);font-weight:600;color:var(--lime);margin-bottom:12px;line-height:1.1}
+.bf-bonus p{font-size:17px;color:rgba(255,255,255,.92);line-height:1.6;margin:0;max-width:560px}
+.bf-bonus-fine{display:block;font-size:14px;color:rgba(255,255,255,.75);font-style:italic;font-weight:600;margin-top:12px}
 /* The card graphic (pure CSS, no image file) */
-.gift-card{position:relative;z-index:1;width:280px;aspect-ratio:1.586;border-radius:16px;background:linear-gradient(140deg,#0b6a77 0%,var(--navy) 60%,#013c44 100%);box-shadow:0 22px 40px rgba(1,40,46,.4);transform:rotate(-6deg);padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between;color:var(--white);text-align:left}
-.gift-card::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 45%);pointer-events:none}
+.gift-card{position:relative;z-index:1;width:280px;aspect-ratio:1.586;border-radius:16px;background:linear-gradient(140deg,#ffb592 0%,var(--coral) 55%,var(--coral-dk) 100%);box-shadow:0 22px 40px rgba(1,30,34,.45);transform:rotate(-6deg);padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between;color:var(--white);text-align:left}
+.gift-card::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 45%);pointer-events:none}
 .gc-top{display:flex;justify-content:space-between;align-items:center}
-.gc-label{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8)}
-.gc-chip{width:38px;height:28px;border-radius:6px;background:linear-gradient(135deg,#f3e3a2,#c9ad5c)}
-.gc-amt{font-family:var(--head);font-size:3.6rem;font-weight:600;line-height:1;color:var(--lime)}
-.gc-foot{white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.gc-label{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.gc-chip{width:38px;height:28px;border-radius:6px;background:linear-gradient(135deg,#fff3c4,#e2c46b)}
+.gc-amt{font-family:var(--head);font-size:3.6rem;font-weight:600;line-height:1;color:var(--white)}
+.gc-foot{white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9)}
 @media(max-width:820px){
-  .bf-bonus{grid-template-columns:1fr;gap:30px;padding:34px 24px 30px;text-align:center}
+  /* Stacked: card on top, dashed tear line across, text below. The notches
+     move up to sit on the tear line. */
+  .bf-bonus{grid-template-columns:1fr;gap:0;padding:34px 24px 32px;text-align:center}
+  .bf-bonus::before,.bf-bonus::after{top:222px;width:36px;height:36px;margin-top:-18px}
+  .bf-bonus::before{left:-18px}
+  .bf-bonus::after{right:-18px}
+  .bf-bonus-body{border-right:0;padding-right:0;border-top:3px dashed rgba(227,246,150,.4);padding-top:30px;margin-top:34px}
   .bf-bonus p{margin:0 auto}
   .gift-card{order:-1;width:230px;margin:6px auto 0}
   .gc-amt{font-size:3rem}
