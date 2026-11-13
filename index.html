@@ -820,14 +820,41 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 @media(max-width:640px){.listen{flex-direction:column;align-items:stretch;gap:8px;padding:14px 14px 12px;text-align:center}.listen audio{flex:none}}
 
 /* Early Black Friday bonus card + "first 5" line in the bonus section */
-.bf-bonus{display:flex;align-items:center;gap:26px;max-width:860px;margin:22px auto 0;background:var(--white);border:1px solid var(--hi-md);border-left:4px solid var(--coral);border-radius:var(--r);padding:24px 28px;text-align:left;box-shadow:0 4px 18px rgba(2,82,93,.08)}
-.bf-bonus-body{flex:1;min-width:0}
-.bf-bonus-tag{display:inline-block;background:var(--lime);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;border-radius:999px;padding:5px 12px;margin-bottom:10px}
-.bf-bonus h3{font-family:var(--head);font-size:1.5rem;font-weight:600;color:var(--navy);margin-bottom:8px;line-height:1.22}
-.bf-bonus p{font-size:15.5px;color:var(--text);line-height:1.6;margin:0}
-.bf-bonus-fine{display:block;font-size:13px;color:var(--muted);font-style:italic;margin-top:8px}
-.bf-bonus-price{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:8px}
-@media(max-width:700px){.bf-bonus{flex-direction:column-reverse;align-items:flex-start;gap:14px;padding:22px}.bf-bonus-price{flex-direction:row;align-items:baseline;gap:14px}}
+/* Early Black Friday gift card: the headline bonus, sits ABOVE the three
+   bonus cards as a "golden ticket" (deep navy, ticket notches, dashed tear
+   line) so it doesn't blend in. The notches are circles in the page's cream
+   colour; if the section background changes, change them to match. */
+.bf-bonus{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:56px;margin:0 0 36px;background:linear-gradient(135deg,#03606c 0%,#013f47 100%);border-radius:var(--r-lg);padding:46px 56px;text-align:left;color:var(--white);box-shadow:0 22px 50px rgba(2,82,93,.32)}
+.bf-bonus::before,.bf-bonus::after{content:'';position:absolute;top:50%;width:46px;height:46px;margin-top:-23px;border-radius:50%;background:var(--cream)}
+.bf-bonus::before{left:-23px}
+.bf-bonus::after{right:-23px}
+.bf-bonus-body{position:relative;z-index:1;min-width:0;border-right:3px dashed rgba(227,246,150,.4);padding-right:56px}
+.bf-bonus-tag{display:inline-block;background:var(--coral);color:var(--white);font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:6px 14px;margin-bottom:16px}
+.bf-bonus h3{font-family:var(--head);font-size:clamp(2rem,4vw,3.1rem);font-weight:600;color:var(--lime);margin-bottom:12px;line-height:1.1}
+.bf-bonus p{font-size:17px;color:rgba(255,255,255,.92);line-height:1.6;margin:0;max-width:560px}
+.bf-bonus-fine{display:block;font-size:14px;color:rgba(255,255,255,.75);font-style:italic;font-weight:600;margin-top:12px}
+/* The card graphic (pure CSS, no image file) */
+.gift-card{position:relative;z-index:1;width:280px;aspect-ratio:1.586;border-radius:16px;background:linear-gradient(140deg,#ffb592 0%,var(--coral) 55%,var(--coral-dk) 100%);box-shadow:0 22px 40px rgba(1,30,34,.45);transform:rotate(-6deg);padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between;color:var(--white);text-align:left}
+.gift-card::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 45%);pointer-events:none}
+.gc-top{display:flex;justify-content:space-between;align-items:center}
+.gc-label{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.gc-chip{width:38px;height:28px;border-radius:6px;background:linear-gradient(135deg,#fff3c4,#e2c46b)}
+.gc-amt{font-family:var(--head);font-size:3.6rem;font-weight:600;line-height:1;color:var(--white)}
+.gc-foot{white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+@media(max-width:820px){
+  /* Stacked: card on top, dashed tear line across, text below. The notches
+     move up to sit on the tear line. */
+  .bf-bonus{grid-template-columns:1fr;gap:0;padding:34px 24px 32px;text-align:center}
+  .bf-bonus::before,.bf-bonus::after{top:222px;width:36px;height:36px;margin-top:-18px}
+  .bf-bonus::before{left:-18px}
+  .bf-bonus::after{right:-18px}
+  .bf-bonus-body{border-right:0;padding-right:0;border-top:3px dashed rgba(227,246,150,.4);padding-top:30px;margin-top:34px}
+  .bf-bonus p{margin:0 auto}
+  .gift-card{order:-1;width:230px;margin:6px auto 0}
+  .gc-amt{font-size:3rem}
+  .gc-foot{font-size:10.5px;letter-spacing:.1em}
+  .bf-bonus-tag{font-size:10.5px;letter-spacing:.1em;padding:6px 12px}
+}
 .bf-first5{max-width:860px;margin:18px auto 0;text-align:center;font-size:16px;line-height:1.6;color:var(--text)}
 .bf-first5 strong{color:var(--navy)}
 .p-first5{font-size:15px;line-height:1.5;color:var(--navy);font-weight:600;background:var(--hi);border-radius:var(--r);padding:10px 14px;margin:14px 0 0}
@@ -1252,6 +1279,24 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
     </div>
 
+    <!-- EARLY BLACK FRIDAY GIFT CARD. Hides itself when the deadline passes
+         (class "bf-only"). To change the gift card amount, also update the
+         card graphic below, the bonus total, the sticky bar ($1,641), the
+         pricing box and the ads FAQ. -->
+    <div class="bf-bonus bf-only fi d2">
+      <div class="bf-bonus-body">
+        <span class="bf-bonus-tag">Early Black Friday bonus &middot; ends Nov 20</span>
+        <h3>A $150 Visa gift card, on&nbsp;us</h3>
+        <p>Put it toward your ad spend and it covers about your first month at $5 a day, so you can watch new subscribers come in before you spend a dime of your own.</p>
+        <span class="bf-bonus-fine">We&rsquo;ll send it once your ads go live.</span>
+      </div>
+      <div class="gift-card" aria-hidden="true">
+        <div class="gc-top"><span class="gc-label">Gift card</span><span class="gc-chip"></span></div>
+        <div class="gc-amt">$150</div>
+        <div class="gc-foot">Your first month of ads</div>
+      </div>
+    </div>
+
     <div class="bonuses fi d2">
       <div class="bonus-item">
         <div class="bonus-shot">
@@ -1297,21 +1342,6 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
     </div>
 
-    <!-- EARLY BLACK FRIDAY EXTRAS. Both blocks hide themselves when the
-         deadline passes (class "bf-only"). To change the gift card amount,
-         also update the total below, the sticky bar ($1,641), the pricing
-         box and the ads FAQ. -->
-    <div class="bf-bonus bf-only fi d2">
-      <div class="bf-bonus-body">
-        <span class="bf-bonus-tag">Early Black Friday bonus</span>
-        <h3>A $150 Visa gift card, on us</h3>
-        <p>Put it toward your ad spend and it covers about your first month at $5 a day, so you can watch new subscribers come in before you spend a dime of your own. <span class="bf-bonus-fine">We&rsquo;ll send it once your ads go live.</span></p>
-      </div>
-      <div class="bf-bonus-price">
-        <span class="bonus-was">$150</span>
-        <span class="bonus-now">Yours free</span>
-      </div>
-    </div>
     <p class="bf-first5 bf-only fi d2">🗓️ <strong>And the first 5 people to sign up are guaranteed a live funnel and running ads by mid-January</strong>, just in time for New Year health goals.</p>
 
     <div class="bonus-total fi d3">
