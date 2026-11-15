@@ -132,7 +132,7 @@ section{padding:80px 0}
 
 /* replay banner */
 [hidden]{display:none!important}
-.replay-banner{background:var(--lime-lt);color:var(--text);padding:52px 0 58px}
+.replay-banner{background:var(--white);color:var(--text);padding:52px 0 58px}
 @media(max-width:860px){.replay-banner{padding:40px 0 44px}}
 @media(max-width:640px){.replay-banner{padding:32px 0 36px}}
 /* Centred stack: eyebrow -> title -> subhead -> video, video doing the talking. */
@@ -821,13 +821,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
 /* Early Black Friday bonus card + "first 5" line in the bonus section */
 /* Early Black Friday gift card: the headline bonus, sits ABOVE the three
-   bonus cards as a "golden ticket" (deep navy, ticket notches, dashed tear
-   line) so it doesn't blend in. The notches are circles in the page's cream
-   colour; if the section background changes, change them to match. */
+   bonus cards as a "golden ticket" (deep navy, dashed tear line) so it
+   doesn't blend in. */
 .bf-bonus{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:56px;margin:0 0 36px;background:linear-gradient(135deg,#03606c 0%,#013f47 100%);border-radius:var(--r-lg);padding:46px 56px;text-align:left;color:var(--white);box-shadow:0 22px 50px rgba(2,82,93,.32)}
-.bf-bonus::before,.bf-bonus::after{content:'';position:absolute;top:50%;width:46px;height:46px;margin-top:-23px;border-radius:50%;background:var(--cream)}
-.bf-bonus::before{left:-23px}
-.bf-bonus::after{right:-23px}
 .bf-bonus-body{position:relative;z-index:1;min-width:0;border-right:3px dashed rgba(227,246,150,.4);padding-right:56px}
 .bf-bonus-tag{display:inline-block;background:var(--coral);color:var(--white);font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:6px 14px;margin-bottom:16px}
 .bf-bonus h3{font-family:var(--head);font-size:clamp(2rem,4vw,3.1rem);font-weight:600;color:var(--lime);margin-bottom:12px;line-height:1.1}
@@ -842,12 +838,8 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 .gc-amt{font-family:var(--head);font-size:3.6rem;font-weight:600;line-height:1;color:var(--white)}
 .gc-foot{white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9)}
 @media(max-width:820px){
-  /* Stacked: card on top, dashed tear line across, text below. The notches
-     move up to sit on the tear line. */
+  /* Stacked: card on top, dashed tear line across, text below. */
   .bf-bonus{grid-template-columns:1fr;gap:0;padding:34px 24px 32px;text-align:center}
-  .bf-bonus::before,.bf-bonus::after{top:222px;width:36px;height:36px;margin-top:-18px}
-  .bf-bonus::before{left:-18px}
-  .bf-bonus::after{right:-18px}
   .bf-bonus-body{border-right:0;padding-right:0;border-top:3px dashed rgba(227,246,150,.4);padding-top:30px;margin-top:34px}
   .bf-bonus p{margin:0 auto}
   .gift-card{order:-1;width:230px;margin:6px auto 0}
@@ -855,7 +847,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
   .gc-foot{font-size:10.5px;letter-spacing:.1em}
   .bf-bonus-tag{font-size:10.5px;letter-spacing:.1em;padding:6px 12px}
 }
-.bf-first5{max-width:860px;margin:18px auto 0;text-align:center;font-size:16px;line-height:1.6;color:var(--text)}
+.bf-first5{max-width:860px;margin:12px auto 0;text-align:center;font-size:16px;line-height:1.6;color:var(--text)}
 .bf-first5 strong{color:var(--navy)}
 .p-first5{font-size:15px;line-height:1.5;color:var(--navy);font-weight:600;background:var(--hi);border-radius:var(--r);padding:10px 14px;margin:14px 0 0}
 
@@ -931,7 +923,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <span class="sb-unit"><span class="sb-num" data-unit="m">--</span><span class="sb-lbl">Min</span></span>
         <span class="sb-unit sb-unit-sec"><span class="sb-num" data-unit="s">--</span><span class="sb-lbl">Sec</span></span>
       </div>
-      <a class="btn btn-p sb-cta" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a call</a>
+      <a class="btn btn-p sb-cta" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab Your Spot</a>
       </div>
     </div>
   </div>
@@ -951,10 +943,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           A sustainable marketing system that puts you in front of new people and grows your audience every day &ndash; <strong>built for you, in your voice</strong>, by a team who gets the health and nutrition world.
         </p>
         <div class="hero-ctas fi d3">
-          <a class="btn btn-p" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a call</a>
+          <a class="btn btn-p" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab Your Spot</a>
         </div>
         <p class="hero-note fi d4">You tell us about your business, we handle the rest.</p>
-        <p class="cta-buy fi d4">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
       </div>
       <div class="hero-photo-col fi d2">
         <!-- TO SWAP THE PHOTO: drop the new file in and update the src + alt below.
@@ -1120,7 +1111,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <div class="section-cta fi d1">
         <p class="section-cta-line">Ready to see what we'd build for you?</p>
-        <a class="btn btn-light" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a call</a>
+        <a class="btn btn-light" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Get started</a>
         <p class="section-cta-sub">Or keep reading. We'll walk you through exactly what's included.</p>
       </div>
     </div>
@@ -1359,8 +1350,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
     <div class="bonus-cta fi d3">
       <p class="bonus-cta-line"><span class="bf-only">Yours when you enroll by Friday.</span><span class="bf-after">Included with your funnel.</span></p>
-      <a class="btn btn-p" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a call</a>
-      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
+      <a class="btn btn-p" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab Your Spot</a>
     </div>
 
   </div>
@@ -1451,9 +1441,8 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
     <div class="section-cta section-cta-left fi d2">
       <p class="section-cta-line">Want this running in the background of your practice?</p>
-      <a class="btn btn-p" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a call</a>
+      <a class="btn btn-p" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab Your Spot</a>
       <p class="section-cta-sub bf-only">Early Black Friday pricing ends Friday, November 20.</p>
-      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
     </div>
   </div>
 </section>
@@ -1561,8 +1550,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
     <p class="cmp-tagline fi d2">The expertise of industry specialists. The personal attention of a small team. <strong>Without the agency price tag.</strong></p>
 
     <div class="cmp-cta-wrap fi d3">
-      <a class="btn btn-p" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a call to see if it&rsquo;s a fit &rarr;</a>
-      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
+      <a class="btn btn-p" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab Your Spot</a>
     </div>
   </div>
 </section>
@@ -1653,8 +1641,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
     </div>
     <div class="fit-cta fi d3">
-      <a class="btn btn-p" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Not sure yet? Book a call &rarr;</a>
-      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
+      <a class="btn btn-p" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab Your Spot</a>
     </div>
   </div>
 </section>
@@ -1843,10 +1830,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <hr class="p-divider"/>
 
 
-      <!-- MAIN BUTTON = Book a call (Acuity). The small line under it is the
-           direct checkout link (coupon comes off by itself after the deadline). -->
-      <a class="btn btn-p btn-block" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a call</a>
-      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot for <span class="bf-only">$1,597</span><span class="bf-after">$1,997</span> &rarr;</a></p>
+      <!-- MAIN BUTTON = checkout (coupon comes off by itself after the deadline).
+           The call link sits under the payment info: the only place a call is offered. -->
+      <a class="btn btn-p btn-block" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab Your Spot<span class="bf-only"> · $1,597</span><span class="bf-after"> · $1,997</span></a>
       <!-- Accepted cards, shown under the buy button. Inline SVG, no image files. -->
       <div class="p-pay" aria-label="Secure checkout. We accept Visa, Mastercard, American Express and Discover.">
         <span class="p-pay-secure"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 0 1 6 0v3H9z"/></svg>Secure checkout</span>
@@ -1858,6 +1844,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </span>
       </div>
       <p class="p-split">Payment plan also available</p>
+
+      <div class="p-call">
+        <p class="p-call-q">Want to chat first?</p>
+        <a class="p-call-link" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a 20-min call with Whitney &rarr;</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1884,7 +1875,6 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <li>No call needed</li>
       </ul>
       <button class="btn btn-p" id="fc-open" type="button">Start my Funnel Fit Check &rarr;</button>
-      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
       <p class="fc-deadline bf-only">Early Black Friday pricing ends Friday, November 20, so the sooner you send it in, the sooner you&rsquo;ll hear back.</p>
       <div class="fc-form" id="fc-form" hidden>
         <iframe id="fc-iframe" title="Funnel Fit Check form" src="about:blank"></iframe>
@@ -1933,7 +1923,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <details class="faq-item">
         <summary class="faq-q">Will this work for my specific practice?</summary>
-        <div class="faq-a">If you have a clear service you're offering and are ready to start growing your list and bringing in more leads, this will work for you. The funnel we build is designed to be simple, effective, and tailored to your specific audience and niche, not a generic template. If you're not sure, <a href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">book a call</a> and we&rsquo;ll help you figure it out before committing.</div>
+        <div class="faq-a">If you have a clear service you're offering and are ready to start growing your list and bringing in more leads, this will work for you. The funnel we build is designed to be simple, effective, and tailored to your specific audience and niche, not a generic template. If you're not sure, email us at <a href="mailto:info@whitneybateson.com">info@whitneybateson.com</a> and we&rsquo;ll help you figure it out before committing.</div>
       </details>
 
       <details class="faq-item">
@@ -1978,9 +1968,8 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <h2>If you've been meaning to build this for a while, <span class="ul">this is the shortcut</span>.</h2>
       <p class="sub"><span class="nb"><span class="bf-only">$1,597 one-time, until Friday, November 20.</span><span class="bf-after">$1,997 one-time.</span></span> <span class="nb">We do the work. You finally get a system bringing in new leads while you focus on your practice.</span></p>
       <div class="close-ctas">
-        <a class="btn btn-p" href="https://whitneybateson.as.me/dfy-funnel-discovery" target="_blank" rel="noopener">Book a call</a>
+        <a class="btn btn-p" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab Your Spot<span class="bf-only"> · $1,597</span><span class="bf-after"> · $1,997</span></a>
       </div>
-      <p class="cta-buy">Already know it&rsquo;s a fit? <a class="js-buy" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/?coupon=BLACKFRIDAY" data-href-after="https://whitneybateson.thrivecart.com/done-for-you-funnel/" target="_blank" rel="noopener">Grab your spot &rarr;</a></p>
       <p class="close-note">Questions? Email me at <a href="mailto:info@whitneybateson.com">info@whitneybateson.com</a></p>
     </div>
   </div>
